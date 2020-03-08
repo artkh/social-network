@@ -1,9 +1,10 @@
 import React from 'react';
+import s from './Navbar.module.css';
 
 const Navbar = () => {
   return (
-    <nav className="nav">
-      <div className="nav__inner">
+    <nav className={s.nav}>
+      <div className={s.inner}>
         <a href="#a">Profile</a>
         <a href="#a">Messages</a>
         <a href="#a">News</a>

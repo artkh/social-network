@@ -1,0 +1,21 @@
+.header {
+  grid-area: header;
+  background-color: #4267b2;
+  border-bottom: 1px solid #29487d;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.inner {
+  
+}
+.logo {
+  padding: 0 10px;
+  display: block;
+}
+
+.logo img {
+  max-width: 80px;
+  height: 40px;
+  display: block;
+}

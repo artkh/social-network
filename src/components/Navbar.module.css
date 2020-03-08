@@ -1,0 +1,20 @@
+.nav {
+  grid-area: nav;
+  background-color: #fff;
+}
+
+.inner {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  padding-top: 10px;
+}
+
+.inner a {
+  /* display: block; */
+  text-decoration: none;
+  padding: 0 10px;
+  color: #1d2129;
+  font-size: 20px;
+}
