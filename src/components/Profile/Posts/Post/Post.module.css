@@ -1,0 +1,23 @@
+.main__posts_item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: minmax(50px, 1fr);
+  grid-gap: 10px;
+}
+
+.main__posts_item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.main__posts_item .user_image {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.main__posts_item .user_image img {
+  width: 100%;
+}
+
+/* .main__posts_item .message {
+  
+} */
