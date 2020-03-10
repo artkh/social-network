@@ -12,7 +12,8 @@ const MyPosts = () => {
         <textarea name="" id="" className={s.text} placeholder="new post..."></textarea>
         <button type="submit" className={s.btn}>send</button>
       </form>
-      <Post />
+      <Post message='Hey, what are you doing?' like='1' />
+      <Post message='bye' like='4' />
     </div>
   );
 }

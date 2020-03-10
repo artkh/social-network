@@ -1,0 +1,22 @@
+.nav {
+  grid-area: nav;
+  background-color: #fff;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 0;
+
+    a {
+      text-decoration: none;
+      color: #1d2129;
+      font-size: 20px;
+      &:not(:last-child) {
+        margin-bottom: 3px;
+      }
+      &:last-child {
+        margin-top: 20px;
+      }
+    }
+  }
+}

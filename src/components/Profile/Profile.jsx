@@ -1,16 +1,16 @@
 import React from 'react';
-import s from './Profile.module.css';
+import s from './Profile.module.scss';
 import MyPosts from './Posts/MyPosts';
 import UserInfo from './UserInfo/UserInfo';
 import MwImage from './MwImage/MwImage';
 
 const Profile = () => {
   return (
-    <main className={s.main}>
+    <div className={s}>
       <MwImage />
       <UserInfo />
       <MyPosts />
-    </main>
+    </div>
   );
 }
 

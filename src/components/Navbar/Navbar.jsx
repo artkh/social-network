@@ -1,15 +1,15 @@
 import React from 'react';
-import s from './Navbar.module.css';
+import s from './Navbar.module.scss';
 
 const Navbar = () => {
   return (
     <nav className={s.nav}>
       <div className={s.inner}>
-        <a href="#a">Profile</a>
-        <a href="#a">Messages</a>
-        <a href="#a">News</a>
-        <a href="#a">Music</a>
-        <a href="#a">Settings</a>
+        <a href="/profile">Profile</a>
+        <a href="/dialogs">Messages</a>
+        <a href="/news">News</a>
+        <a href="/music">Music</a>
+        <a href="/settings">Settings</a>
       </div>
     </nav>
   );

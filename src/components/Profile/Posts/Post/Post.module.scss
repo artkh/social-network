@@ -1,0 +1,20 @@
+.posts_item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: minmax(50px, 1fr);
+  grid-gap: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .user_image {
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+
+  }
+}
