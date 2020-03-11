@@ -3,9 +3,9 @@
   background-color: #fff;
 
   .inner {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 10px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
 
     a {
       text-decoration: none;
@@ -17,6 +17,9 @@
       &:last-child {
         margin-top: 20px;
       }
+    }
+    a.active {
+      color: gold;
     }
   }
 }
