@@ -3,7 +3,7 @@ import s from './Post.module.scss';
 
 const Post = (props) => {
   return (
-    <div className={s.posts_item}>
+    <div className={s.posts_item} id={props.id}>
       <a href="#a" className={s.user_image}>
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" alt="" />
       </a>
