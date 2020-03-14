@@ -6,16 +6,11 @@ import MwImage from './MwImage/MwImage';
 
 const Profile = (props) => {
 
-  // let postsData = [
-  //   { id: 1, message: 'Hey, what are you doing?', like: 10 },
-  //   { id: 2, message: 'Hello World!', like: 20 },
-  // ];
-
   return (
     <div className={s}>
       <MwImage />
       <UserInfo />
-      <Posts data={props.data} />
+      <Posts postsData={props.postsData} />
     </div>
   );
 }
