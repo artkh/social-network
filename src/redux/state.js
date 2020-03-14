@@ -1,20 +1,40 @@
 let state = {
   profilePage: {
-    postsData: [
-      { id: 1, message: 'Hey, what are you doing?', like: 10 },
-      { id: 2, message: 'Hello World!', like: 20 },
+    postsData: [{
+        id: 1,
+        message: 'Hey, what are you doing?',
+        like: 10
+      },
+      {
+        id: 2,
+        message: 'Hello World!',
+        like: 20
+      },
     ],
   },
   dialogsPage: {
-    dialogsData: [
-      { id: 1, name: 'Andrew' },
-      { id: 2, name: 'Sasha' },
-      { id: 3, name: 'Sveta' },
-      { id: 4, name: 'Valera' },
-      { id: 5, name: 'Viktor' },
-    ],
-    messagesData: [
+    dialogsData: [{
+        id: 1,
+        name: 'Andrew'
+      },
       {
+        id: 2,
+        name: 'Sasha'
+      },
+      {
+        id: 3,
+        name: 'Sveta'
+      },
+      {
+        id: 4,
+        name: 'Valera'
+      },
+      {
+        id: 5,
+        name: 'Viktor'
+      },
+    ],
+    messagesData: [{
         id: 1,
         name: 'Andrew',
         img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
@@ -50,6 +70,45 @@ let state = {
         class: 'inbox',
       },
     ],
+  },
+  friendsPage: {
+    friendsData: [{
+      id: 1,
+      name: 'Andrew',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+    {
+      id: 2,
+      name: 'Sveta',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+    {
+      id: 3,
+      name: 'Olya',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+    {
+      id: 4,
+      name: 'Vika',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+    {
+      id: 5,
+      name: 'Katya',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+    {
+      id: 6,
+      name: 'Alex',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+    {
+      id: 7,
+      name: 'Polya',
+      img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+    },
+  ]
+
   },
 };
 

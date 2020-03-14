@@ -1,0 +1,18 @@
+.friends {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(80px, auto));
+    grid-gap: 10px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.friend {
+    text-decoration: none;
+    color: #1d2129;
+    text-align: center;
+    &_image {
+        width: 80px;
+        border-radius: 50%;
+    }
+}

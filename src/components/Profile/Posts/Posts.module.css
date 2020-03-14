@@ -1,6 +1,7 @@
 .main__posts {
   background-color: #fff;
   padding: 10px;
+  border-radius: 3px;
 }
 
 .main__posts_title {

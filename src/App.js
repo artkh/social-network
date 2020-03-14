@@ -11,19 +11,18 @@ import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
 
 const App = (props) => {
-
   return (
     <BrowserRouter>
       <div className="wrapper">
         <Header />
-        <Navbar />
+        <Navbar friendsData={props.state.friendsPage.friendsData} />
         <main className="main">
           <Route path='/profile' render={ () => <Profile postsData={props.state.profilePage.postsData} /> }/>
           <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogsData} messagesData={props.state.dialogsPage.messagesData} /> }/>
           <Route path='/news' component={News}/>
           <Route path='/music' component={Music}/>
           <Route path='/settings' component={Settings}/>
-          <Route path='/friends' render={ () => <Friends /> } />
+          <Route path='/friends' render={ () => <Friends friendsData={props.state.friendsPage.friendsData} /> } />
         </main>
       </div>
     </BrowserRouter>
