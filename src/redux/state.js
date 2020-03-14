@@ -14,8 +14,41 @@ let state = {
       { id: 5, name: 'Viktor' },
     ],
     messagesData: [
-      { id: 1, name: 'Andrew', img: 'https://ufolabs.net/data/attachments/0/261-ed89b82f7ab98db17d82ee9e15195971.jpg', message: 'Hohoohhoh' },
-      { id: 2, name: 'Me', img: 'https://ufolabs.net/data/attachments/0/261-ed89b82f7ab98db17d82ee9e15195971.jpg', message: 'Kokokkokko' }
+      {
+        id: 1,
+        name: 'Andrew',
+        img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+        message: 'Hello!',
+        class: 'inbox',
+      },
+      {
+        id: 2,
+        name: 'Me',
+        img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+        message: 'Hello, friend!',
+        class: 'outbox',
+      },
+      {
+        id: 3,
+        name: 'Me',
+        img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+        message: 'What are you doing?',
+        class: 'outbox',
+      },
+      {
+        id: 4,
+        name: 'Me',
+        img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+        message: 'm?',
+        class: 'outbox',
+      },
+      {
+        id: 5,
+        name: 'Andrew',
+        img: 'https://lh3.googleusercontent.com/proxy/V5SbgD6BBgj1I0NDYE77iRnSWXpzMW8LoqTly0-VyEb1UHdADU9rH0xVz-nmx_z9QPqkjD28dDrYz3Ppv0RN825CKyCqie--VufBvPMFMxA2Nj_udIPUf624m-Ir4BWcSdfP01Tp',
+        message: 'learn',
+        class: 'inbox',
+      },
     ],
   },
 };

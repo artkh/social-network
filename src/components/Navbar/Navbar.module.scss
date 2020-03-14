@@ -1,25 +1,48 @@
-.nav {
+.navbar {
   grid-area: nav;
   background-color: #fff;
 
-  .inner {
+  .nav {
     display: grid;
     grid-template-columns: 1fr;
     padding: 10px;
-
     a {
       text-decoration: none;
       color: #1d2129;
       font-size: 20px;
-      &:not(:last-child) {
-        margin-bottom: 3px;
-      }
-      &:last-child {
-        margin-top: 20px;
-      }
+      margin-bottom: 3px;
     }
     a.active {
       color: gold;
+    }
+    .link_settings {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .link_friends {
+      font-size: 30px;
+    }
+  }
+}
+.friends {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 10px 10px;
+  &_item {
+    max-width: 50px;
+    text-decoration: none;
+    color: #1d2129;
+    text-align: center;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &_image {
+      width: 100%;
+      border-radius: 50%;
+    }
+    &_name {
+      font-size: 12px;
     }
   }
 }

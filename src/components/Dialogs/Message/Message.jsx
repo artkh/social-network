@@ -3,7 +3,7 @@ import s from './../Dialogs.module.scss';
 
 const Message = (props) => {
   return (
-    <div className={s.message} id={props.id}>
+    <div className={`${s.message} Dialogs_${props.class}__1brKs`} id={props.id}>
       <div className={s.user_info}>
         <div className={s.image}>
           <img src={"" + props.img} alt="" />

@@ -41,7 +41,13 @@
 
     .messages {
       padding-left: 30px;
-
+      .message.outbox {
+        grid-template-columns: 1fr 50px;
+        .user_message {
+          grid-column: 1;
+          grid-row: 1;
+        }
+      }
       .message {
         display: grid;
         grid-template-columns: 50px 1fr;
