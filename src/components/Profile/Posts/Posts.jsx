@@ -5,6 +5,12 @@ import Post from './Post/Post';
 const Posts = (props) => {
 
   let post = props.postsData.map( p => <Post id={p.id} message={p.message} like={p.like} /> );
+  
+  let newPostElement = React.createRef();
+  let addPost = () => {
+    let post = newPostElement.current.value;
+    alert(post);
+  }
 
   return (
     <div className={s.main__posts}>
@@ -12,8 +18,8 @@ const Posts = (props) => {
         My Posts
         </div>
       <form action="" className={s.main__posts_form}>
-        <textarea name="" id="" className={s.text} placeholder="new post..."></textarea>
-        <button type="submit" className={s.btn}>send</button>
+        <textarea name="" id="" className={s.text} placeholder="new post..." ref={ newPostElement }></textarea>
+        <button  className={s.btn} onClick={ addPost }>send</button>
       </form>
       { post }
     </div>

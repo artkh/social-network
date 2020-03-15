@@ -1,0 +1,50 @@
+.message.outbox {
+  grid-template-columns: 1fr 50px;
+  .user_message {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #0a80fe;
+    color: #fff;
+  }
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-gap: 30px;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .user_info {
+    .image {
+      overflow: hidden;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      position: relative;
+      img {
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, 50%);
+        width: 100%;
+      }
+    }
+    .name {
+      text-align: center;
+      color: gray;
+    }
+  }
+
+  .user_message {
+    background-color: #e5e4ea;
+    border-radius: 20px;
+    padding: 10px 15px;
+    align-self: baseline;
+    justify-self: start;
+    word-wrap: break-word;
+    max-width: 300px;
+  }
+}
