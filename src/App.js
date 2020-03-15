@@ -17,7 +17,7 @@ const App = (props) => {
         <Header />
         <Navbar friendsData={props.state.friendsPage.friendsData} />
         <main className="main">
-          <Route path='/profile' render={ () => <Profile postsData={props.state.profilePage.postsData} /> }/>
+          <Route path='/profile' render={ () => <Profile postsData={props.state.profilePage.postsData} addPost={props.addPost} /> }/>
           <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogsData} messagesData={props.state.dialogsPage.messagesData} /> }/>
           <Route path='/news' component={News}/>
           <Route path='/music' component={Music}/>
