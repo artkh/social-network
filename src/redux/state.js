@@ -13,6 +13,7 @@ let state = {
         like: 20
       },
     ],
+    newPostText: 'social network',
   },
   dialogsPage: {
     dialogsData: [{
@@ -114,15 +115,21 @@ let state = {
   },
 };
 
-export let addPost = (post) => {
+export let addPost = () => {
   let newPost = {
     id: 5,
-    message: post,
+    message: state.profilePage.newPostText,
     like: 0,
   };
 
   state.profilePage.postsData.push(newPost);
+  state.profilePage.newPostText = '';
 
+  rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (changeText) => {
+  state.profilePage.newPostText = changeText;
   rerenderEntireTree(state);
 };
 
