@@ -10,6 +10,7 @@ const Posts = (props) => {
   let addPost = () => {
     let post = newPostElement.current.value;
     props.addPost(post);
+    newPostElement.current.value = '';
   }
 
   return (
@@ -17,10 +18,10 @@ const Posts = (props) => {
       <div className={s.main__posts_title}>
         My Posts
         </div>
-      <form action="" className={s.main__posts_form}>
+      <div className={s.main__posts_form}>
         <textarea name="" id="" className={s.text} placeholder="new post..." ref={ newPostElement }></textarea>
         <button  className={s.btn} onClick={ addPost }>send</button>
-      </form>
+      </div>
       { post }
     </div>
   );

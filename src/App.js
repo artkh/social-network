@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -12,7 +12,6 @@ import Friends from './components/Friends/Friends';
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="wrapper">
         <Header />
         <Navbar friendsData={props.state.friendsPage.friendsData} />
@@ -25,7 +24,6 @@ const App = (props) => {
           <Route path='/friends' render={ () => <Friends friendsData={props.state.friendsPage.friendsData} /> } />
         </main>
       </div>
-    </BrowserRouter>
   );
 }
 
