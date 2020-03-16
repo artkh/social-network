@@ -23,7 +23,7 @@ const Posts = (props) => {
       </div>
       <div className={s.main__posts_form}>
         <textarea name="" id="" className={s.text} placeholder="new post..." ref={newPostElement} value={props.newPostText} onChange={ onPostChange } />
-        <button  className={s.btn} onClick={ addPost }>send</button>
+        <button type="button" className={s.btn} onClick={ addPost }>send</button>
       </div>
       { post }
     </div>
