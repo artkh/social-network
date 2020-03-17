@@ -1,168 +1,172 @@
-let rerenderEntireTree = () => {
-  console.log('change');
-}
+let store = {
+  _state: {
+    profilePage: {
+      postsData: [{
+          id: 1,
+          message: 'Hey, what are you doing?',
+          like: 10
+        },
+        {
+          id: 2,
+          message: 'Hello World!',
+          like: 20
+        },
+      ],
+      newPostText: '',
+    },
+    dialogsPage: {
+      dialogsData: [{
+          id: 1,
+          name: 'Andrew'
+        },
+        {
+          id: 2,
+          name: 'Sasha'
+        },
+        {
+          id: 3,
+          name: 'Sveta'
+        },
+        {
+          id: 4,
+          name: 'Valera'
+        },
+        {
+          id: 5,
+          name: 'Viktor'
+        },
+      ],
+      messagesData: [{
+          id: 1,
+          name: 'Andrew',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+          message: 'Hello!',
+          class: 'inbox',
+        },
+        {
+          id: 2,
+          name: 'Me',
+          img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
+          message: 'Hello, friend!',
+          class: 'outbox',
+        },
+        {
+          id: 3,
+          name: 'Me',
+          img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
+          message: 'What are you doing?',
+          class: 'outbox',
+        },
+        {
+          id: 4,
+          name: 'Me',
+          img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
+          message: 'm?',
+          class: 'outbox',
+        },
+        {
+          id: 5,
+          name: 'Andrew',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+          message: 'learn',
+          class: 'inbox',
+        },
+      ],
+      newMessageText: '',
+    },
+    friendsPage: {
+      friendsData: [{
+          id: 1,
+          name: 'Andrew',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+        {
+          id: 2,
+          name: 'Sveta',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+        {
+          id: 3,
+          name: 'Olya',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+        {
+          id: 4,
+          name: 'Vika',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+        {
+          id: 5,
+          name: 'Katya',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+        {
+          id: 6,
+          name: 'Alex',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+        {
+          id: 7,
+          name: 'Polya',
+          img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        },
+      ]
 
-let state = {
-  profilePage: {
-    postsData: [{
-        id: 1,
-        message: 'Hey, what are you doing?',
-        like: 10
-      },
-      {
-        id: 2,
-        message: 'Hello World!',
-        like: 20
-      },
-    ],
-    newPostText: '',
+    },
   },
-  dialogsPage: {
-    dialogsData: [{
-        id: 1,
-        name: 'Andrew'
-      },
-      {
-        id: 2,
-        name: 'Sasha'
-      },
-      {
-        id: 3,
-        name: 'Sveta'
-      },
-      {
-        id: 4,
-        name: 'Valera'
-      },
-      {
-        id: 5,
-        name: 'Viktor'
-      },
-    ],
-    messagesData: [{
-        id: 1,
-        name: 'Andrew',
-        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-        message: 'Hello!',
-        class: 'inbox',
-      },
-      {
-        id: 2,
-        name: 'Me',
-        img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
-        message: 'Hello, friend!',
-        class: 'outbox',
-      },
-      {
-        id: 3,
-        name: 'Me',
-        img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
-        message: 'What are you doing?',
-        class: 'outbox',
-      },
-      {
-        id: 4,
-        name: 'Me',
-        img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
-        message: 'm?',
-        class: 'outbox',
-      },
-      {
-        id: 5,
-        name: 'Andrew',
-        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-        message: 'learn',
-        class: 'inbox',
-      },
-    ],
-    newMessageText: '',
+
+  getState() {
+    return this._state;
   },
-  friendsPage: {
-    friendsData: [{
-      id: 1,
-      name: 'Andrew',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-    {
-      id: 2,
-      name: 'Sveta',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-    {
-      id: 3,
-      name: 'Olya',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-    {
-      id: 4,
-      name: 'Vika',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-    {
+
+  _callSubscriber() {
+    console.log('change');
+  },
+
+  addPost() {
+    debugger;
+    let newPost = {
       id: 5,
-      name: 'Katya',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-    {
-      id: 6,
-      name: 'Alex',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-    {
-      id: 7,
-      name: 'Polya',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-    },
-  ]
+      message: this._state.profilePage.newPostText,
+      like: 0,
+    };
 
+    this._state.profilePage.postsData.unshift(newPost);
+    this._state.profilePage.newPostText = '';
+
+    this._callSubscriber(this._state);
   },
-};
 
+  updateNewPostText(changeText) {
+    this._state.profilePage.newPostText = changeText;
+    this._callSubscriber(this._state);
+  },
 
-export const sendMessage = () => {
+  sendMessage() {
 
-  let newMessage = {
+    let newMessage = {
       id: 6,
       name: 'Me',
       img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-      message: state.dialogsPage.newMessageText,
+      message: this._state.dialogsPage.newMessageText,
       class: 'outbox',
-  };
+    };
 
-  state.dialogsPage.messagesData.push(newMessage);
-  state.dialogsPage.newMessageText ='';
+    this._state.dialogsPage.messagesData.push(newMessage);
+    this._state.dialogsPage.newMessageText = '';
 
-  rerenderEntireTree(state);
+    this._callSubscriber(this._state);
+  },
+
+  updateNewMessageText(changeTextMessage) {
+    this._state.dialogsPage.newMessageText = changeTextMessage;
+    this._callSubscriber(this._state);
+  },
+
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
 }
 
-export const updateNewMessageText = (changeTextMessage) => {
-  state.dialogsPage.newMessageText = changeTextMessage;
-  rerenderEntireTree(state);
-}
-
-
-export const addPost = () => {
-
-  let newPost = {
-    id: 5,
-    message: state.profilePage.newPostText,
-    like: 0,
-  };
-
-  state.profilePage.postsData.unshift(newPost);
-  state.profilePage.newPostText = '';
-
-  rerenderEntireTree(state);
-};
-
-export const updateNewPostText = (changeText) => {
-
-  state.profilePage.newPostText = changeText;
-  rerenderEntireTree(state);
-};
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
-}
-
-export default state;
+export default store;
+window.store = store;
