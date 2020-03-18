@@ -163,7 +163,7 @@ let store = {
       this._callSubscriber(this._state);
     }
   },
-}
+};
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostTextActionCreator = (changeText) => ({ type: UPDATE_NEW_POST_TEXT, changeText: changeText });

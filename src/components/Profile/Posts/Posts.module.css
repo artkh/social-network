@@ -22,6 +22,7 @@
   resize: none;
   outline: none;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .main__posts_form .text:focus::placeholder {
@@ -29,10 +30,12 @@
 }
 
 .main__posts_form .btn {
-  background-color: green;
-  padding: 5px;
+  background-color: rgba(144, 216, 116, 0.945);
+  padding: 8px 15px;
   color: #fff;
   border: none;
   margin-right: 0;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
