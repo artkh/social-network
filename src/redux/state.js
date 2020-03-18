@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
   _state: {
     profilePage: {
@@ -126,7 +131,7 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: 5,
         message: this._state.profilePage.newPostText,
@@ -137,10 +142,10 @@ let store = {
       this._state.profilePage.newPostText = '';
 
       this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.changeText;
       this._callSubscriber(this._state);
-    } else if (action.type === 'SEND-MESSAGE') {
+    } else if (action.type === SEND_MESSAGE) {
       let newMessage = {
         id: 6,
         name: 'Me',
@@ -153,34 +158,18 @@ let store = {
       this._state.dialogsPage.newMessageText = '';
 
       this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._state.dialogsPage.newMessageText = action.changeTextMessage;
       this._callSubscriber(this._state);
     }
   },
-
-//   sendMessage() {
-
-//     let newMessage = {
-//       id: 6,
-//       name: 'Me',
-//       img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-//       message: this._state.dialogsPage.newMessageText,
-//       class: 'outbox',
-//     };
-
-//     this._state.dialogsPage.messagesData.push(newMessage);
-//     this._state.dialogsPage.newMessageText = '';
-
-//     this._callSubscriber(this._state);
-//   },
-
-//   updateNewMessageText(changeTextMessage) {
-//     this._state.dialogsPage.newMessageText = changeTextMessage;
-//     this._callSubscriber(this._state);
-//   },
-
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const updateNewPostTextActionCreator = (changeText) => ({ type: UPDATE_NEW_POST_TEXT, changeText: changeText });
+
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE});
+export const changeMessageActionCreator = (changeTextMessage) => ({ type: UPDATE_NEW_MESSAGE_TEXT, changeTextMessage: changeTextMessage});
 
 export default store;
 window.store = store;
