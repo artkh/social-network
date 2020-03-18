@@ -114,58 +114,72 @@ let store = {
 
     },
   },
-
-  getState() {
-    return this._state;
-  },
-
   _callSubscriber() {
     console.log('change');
   },
 
-  addPost() {
-    debugger;
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      like: 0,
-    };
-
-    this._state.profilePage.postsData.unshift(newPost);
-    this._state.profilePage.newPostText = '';
-
-    this._callSubscriber(this._state);
+  getState() {
+    return this._state;
   },
-
-  updateNewPostText(changeText) {
-    this._state.profilePage.newPostText = changeText;
-    this._callSubscriber(this._state);
-  },
-
-  sendMessage() {
-
-    let newMessage = {
-      id: 6,
-      name: 'Me',
-      img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-      message: this._state.dialogsPage.newMessageText,
-      class: 'outbox',
-    };
-
-    this._state.dialogsPage.messagesData.push(newMessage);
-    this._state.dialogsPage.newMessageText = '';
-
-    this._callSubscriber(this._state);
-  },
-
-  updateNewMessageText(changeTextMessage) {
-    this._state.dialogsPage.newMessageText = changeTextMessage;
-    this._callSubscriber(this._state);
-  },
-
   subscribe(observer) {
     this._callSubscriber = observer;
   },
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        like: 0,
+      };
+
+      this._state.profilePage.postsData.unshift(newPost);
+      this._state.profilePage.newPostText = '';
+
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.changeText;
+      this._callSubscriber(this._state);
+    } else if (action.type === 'SEND-MESSAGE') {
+      let newMessage = {
+        id: 6,
+        name: 'Me',
+        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+        message: this._state.dialogsPage.newMessageText,
+        class: 'outbox',
+      };
+
+      this._state.dialogsPage.messagesData.push(newMessage);
+      this._state.dialogsPage.newMessageText = '';
+
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      this._state.dialogsPage.newMessageText = action.changeTextMessage;
+      this._callSubscriber(this._state);
+    }
+  },
+
+//   sendMessage() {
+
+//     let newMessage = {
+//       id: 6,
+//       name: 'Me',
+//       img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
+//       message: this._state.dialogsPage.newMessageText,
+//       class: 'outbox',
+//     };
+
+//     this._state.dialogsPage.messagesData.push(newMessage);
+//     this._state.dialogsPage.newMessageText = '';
+
+//     this._callSubscriber(this._state);
+//   },
+
+//   updateNewMessageText(changeTextMessage) {
+//     this._state.dialogsPage.newMessageText = changeTextMessage;
+//     this._callSubscriber(this._state);
+//   },
+
 }
 
 export default store;

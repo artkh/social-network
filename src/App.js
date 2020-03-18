@@ -17,14 +17,12 @@ const App = (props) => {
         <Navbar friendsData={props.state.friendsPage.friendsData} />
         <main className="main">
           <Route path='/profile' render={ () => <Profile postsData={props.state.profilePage.postsData} 
-            addPost={props.addPost} 
-            newPostText={props.state.profilePage.newPostText} 
-            updateNewPostText={props.updateNewPostText} /> }/>
+            dispatch={props.dispatch}
+            newPostText={props.state.profilePage.newPostText}  /> }/>
           <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogsData} 
             messagesData={props.state.dialogsPage.messagesData}
-            sendMessage={props.sendMessage}
-            newMessageText={props.state.dialogsPage.newMessageText}
-            updateNewMessageText={props.updateNewMessageText} /> }/>
+            dispatch={props.dispatch}
+            newMessageText={props.state.dialogsPage.newMessageText} /> }/>
           <Route path='/news' component={News}/>
           <Route path='/music' component={Music}/>
           <Route path='/settings' component={Settings}/>
