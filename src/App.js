@@ -11,15 +11,18 @@ import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
 
 const App = (props) => {
+
   return (
       <div className="wrapper">
         <Header />
         <Navbar friendsData={props.state.friendsPage.friendsData} />
         <main className="main">
-          <Route path='/profile' render={ () => <Profile postsData={props.state.profilePage.postsData} 
+          <Route path='/profile' render={ () => <Profile 
+            postsData={props.state.profilePage.postsData} 
             dispatch={props.dispatch}
             newPostText={props.state.profilePage.newPostText}  /> }/>
-          <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogsData} 
+          <Route path='/dialogs' render={ () => <Dialogs 
+            dialogsData={props.state.dialogsPage.dialogsData} 
             messagesData={props.state.dialogsPage.messagesData}
             dispatch={props.dispatch}
             newMessageText={props.state.dialogsPage.newMessageText} /> }/>

@@ -2,8 +2,6 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import friendsReducer from "./friends-reducer";
 
-
-
 let store = {
   _state: {
     profilePage: {
@@ -141,7 +139,5 @@ let store = {
 
   }
 };
-
-
 
 export default store;

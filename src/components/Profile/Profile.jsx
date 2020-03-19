@@ -10,7 +10,8 @@ const Profile = (props) => {
     <div className={s}>
       <MwImage />
       <UserInfo />
-      <Posts postsData={props.postsData}  
+      <Posts 
+        postsData={props.postsData}  
         newPostText={props.newPostText} 
         dispatch={props.dispatch} />
     </div>
