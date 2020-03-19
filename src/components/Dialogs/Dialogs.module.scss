@@ -2,6 +2,7 @@
   background-color: #fff;
   padding: 10px;
   border-radius: 3px;
+  min-height: 0vh;
   h1 {
     margin: 0;
     margin-bottom: 20px;
@@ -40,10 +41,22 @@
       }
     }
     .messages {
-      padding-left: 30px;
+      padding: 0 30px;
       margin-bottom: 20px;
-      max-height: 500px;
+      max-height: 55vh;
       overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
     }
   }
 }
