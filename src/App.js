@@ -15,21 +15,18 @@ const App = (props) => {
   return (
       <div className="wrapper">
         <Header />
-        <Navbar friendsData={props.state.friendsPage.friendsData} />
+        <Navbar friendsData={ props.state.friendsPage.friendsData } />
         <main className="main">
-          <Route path='/profile' render={ () => <Profile 
-            postsData={props.state.profilePage.postsData} 
-            dispatch={props.dispatch}
-            newPostText={props.state.profilePage.newPostText}  /> }/>
-          <Route path='/dialogs' render={ () => <Dialogs 
-            dialogsData={props.state.dialogsPage.dialogsData} 
-            messagesData={props.state.dialogsPage.messagesData}
-            dispatch={props.dispatch}
-            newMessageText={props.state.dialogsPage.newMessageText} /> }/>
+          <Route path='/profile' render={ () => <Profile store={ props.store }  /> }/>
+          <Route path='/dialogs' render={ () => <Dialogs
+            dialogsData={ props.state.dialogsPage.dialogsData } 
+            messagesData={ props.state.dialogsPage.messagesData }
+            dispatch={ props.dispatch }
+            newMessageText={ props.state.dialogsPage.newMessageText } /> }/>
           <Route path='/news' component={News}/>
           <Route path='/music' component={Music}/>
           <Route path='/settings' component={Settings}/>
-          <Route path='/friends' render={ () => <Friends friendsData={props.state.friendsPage.friendsData} /> } />
+          <Route path='/friends' render={ () => <Friends friendsData={ props.state.friendsPage.friendsData } /> } />
         </main>
       </div>
   );
