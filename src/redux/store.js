@@ -115,7 +115,6 @@ let store = {
           img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
         },
       ]
-
     },
   },
   _callSubscriber() {
