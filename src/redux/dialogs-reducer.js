@@ -66,6 +66,8 @@ const dialogsReducer = (state = initialState, action) => {
   
   switch (action.type) {
     case SEND_MESSAGE:
+      
+      {
       let newMessage = {
         id: 6,
         name: 'Me',
@@ -73,12 +75,26 @@ const dialogsReducer = (state = initialState, action) => {
         message: state.newMessageText,
         class: 'outbox',
       };
-      state.messagesData.push(newMessage);
-      state.newMessageText = '';
-      return state;
+      let copyState = {...state};
+      copyState.messagesData = [...state.messagesData];
+      copyState.messagesData.push(newMessage);
+      copyState.newMessageText = '';
+      return copyState;
+      }
+
+      // state.messagesData.push(newMessage);
+      // state.newMessageText = '';
+      // return state;
     case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.changeTextMessage;
-      return state;
+
+      {
+      let copyState = {...state};
+      copyState.newMessageText = action.changeTextMessage;
+      return copyState;
+      }
+
+      // state.newMessageText = action.changeTextMessage;
+      // return state;
     default:
       return state;
   }
