@@ -5,7 +5,7 @@ import Friend from '../Friends/Friend/Friend';
 
 const Navbar = (props) => {
 
-  let friendsItem = props.friendsData.map(f => <Friend id={f.id} name={f.name} img={f.img} />);
+  // let friendsItem = props.friendsData.map(f => <Friend id={f.id} name={f.name} img={f.img} />);
 
   return (
       <aside className={s.navbar}>
@@ -17,9 +17,9 @@ const Navbar = (props) => {
           <NavLink to="/settings" activeClassName={s.active} className={s.link_settings}>Settings</NavLink>
           <NavLink to="/friends" activeClassName={s.active} className={s.link_friends}>Friends</NavLink>
         </nav>
-        <div className={s.friends}>
+        {/* <div className={s.friends}>
           {friendsItem}
-        </div>
+        </div> */}
       </aside>
   );
 }
