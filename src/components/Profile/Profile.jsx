@@ -10,8 +10,7 @@ const Profile = (props) => {
     <div className={s}>
       <MwImage />
       <UserInfo />
-      <PostsContainer
-        store= {props.store} />
+      <PostsContainer />
     </div>
   );
 }
