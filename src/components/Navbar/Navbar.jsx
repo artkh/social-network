@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Navbar.module.scss';
 import {NavLink} from 'react-router-dom';
-import Friend from '../Friends/Friend/Friend';
+// import Friend from '../Friends/Friend/Friend';
 
 const Navbar = (props) => {
 
