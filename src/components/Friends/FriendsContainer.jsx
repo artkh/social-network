@@ -1,16 +1,6 @@
 import { connect } from 'react-redux';
 import Friends from './Friends';
-
-// const Friends = (props) => {
-  
-//   let friendsItem = props.friendsData.map(f => <Friend id={f.id} name={f.name} img={f.img} />);
-  
-//   return (
-//     <div className={s.friends}>
-//       { friendsItem }
-//     </div>
-//   );
-// };
+import { followAC, unfollowAC } from '../../redux/friends-reducer';
 
 let mapStateToProps = (state) => {
   return {
@@ -18,7 +8,16 @@ let mapStateToProps = (state) => {
   }
 };
 
-let mapDispatchToProps = () => {};
+let mapDispatchToProps = (dispatch) => {
+  return {
+    follow: (userId) => {
+      dispatch( followAC(userId) )
+    },
+    unfollow: (userId) => {
+      dispatch( unfollowAC(userId) )
+    }
+  }
+}
 
 const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
 

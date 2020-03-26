@@ -32,17 +32,12 @@ const profileReducer = (state = initialState, action) => {
       stateCopy.newPostText = '';
       return stateCopy;
       }
-      // state.postsData.unshift(newPost);
-      // state.newPostText = '';
-      // return state;
     case UPDATE_NEW_POST_TEXT: 
       {
       let stateCopy = {...state};
       stateCopy.newPostText = action.changeText;
       return stateCopy;
       }
-      // state.newPostText = action.changeText;
-      // return state;
     default:
       return state;
   }

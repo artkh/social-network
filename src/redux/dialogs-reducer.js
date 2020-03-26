@@ -82,9 +82,6 @@ const dialogsReducer = (state = initialState, action) => {
       return copyState;
       }
 
-      // state.messagesData.push(newMessage);
-      // state.newMessageText = '';
-      // return state;
     case UPDATE_NEW_MESSAGE_TEXT:
 
       {
@@ -93,8 +90,6 @@ const dialogsReducer = (state = initialState, action) => {
       return copyState;
       }
 
-      // state.newMessageText = action.changeTextMessage;
-      // return state;
     default:
       return state;
   }

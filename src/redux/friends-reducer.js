@@ -1,5 +1,5 @@
-// const SUBSCRIBE_TRUE = 'SUB_TRUE';
-// const SUBSCRIBE_FALSE = 'SUB_FALSE';
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
 
 let initialState = {
   friendsData: [{
@@ -46,7 +46,41 @@ let initialState = {
 };
 
 const friendsReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case FOLLOW:
+      {
+
+        return {
+          ...state,
+          friendsData: state.friendsData.map( f => {
+            if(f.id === action.userId) {
+              return {...f, subscribe: true}
+            }
+            return f;
+          })
+        };
+
+      }
+    case UNFOLLOW:
+      {
+
+        return {
+          ...state,
+          friendsData: state.friendsData.map( f => {
+            if(f.id === action.userId) {
+              return {...f, subscribe: false}
+            }
+            return f;
+          })
+        };
+
+      }
+    default:
+      return state;
+  }
 };
+
+export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 
 export default friendsReducer;
