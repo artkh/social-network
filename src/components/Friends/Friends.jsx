@@ -1,55 +1,20 @@
 import React from 'react';
 import s from './Friends.module.scss';
+import * as axios from 'axios';
 
 const Friends = (props) => {
 
-  if(props.friendsData.length === 0) {
-    props.setFriends([
-      {
-        id: 1,
-        firstName: 'Andrew',
-        lastName: 'K.',
-        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-        country: 'Russia',
-        town: 'Moscow',
-        status: 'I am looking for a Job right now...',
-        subscribe: true
-      },
-      {
-        id: 2,
-        firstName: 'Sveta',
-        lastName: 'D.',
-        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-        country: 'Belarus',
-        town: 'Minsk',
-        status: 'I am so pretty',
-        subscribe: false
-      },
-      {
-        id: 3,
-        firstName: 'Olya',
-        lastName: 'L.',
-        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-        country: 'Ukraine',
-        town: 'Kiev',
-        status: 'I love watch movie',
-        subscribe: true
-      },
-      {
-        id: 4,
-        firstName: 'Vika',
-        lastName: 'S.',
-        img: 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg',
-        country: 'Russia',
-        town: 'St Peterburg',
-        status: 'I am free',
-        subscribe: false
-      },
-    ]);
+  let showFriends = () => {
+    if(props.friendsData.length === 0) {
+      axios.get("https://artkh.github.io/json/friends.json").then( response => {
+        props.setFriends(response.data.items);
+      })
+    }
   }
 
   return (
     <div className={s.friends}>
+      <button onClick={showFriends}>show</button>
       {
         props.friendsData.map( f => 
           <div className={s.friend} key={f.id}>
