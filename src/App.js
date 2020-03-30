@@ -15,14 +15,14 @@ const App = (props) => {
   return (
       <div className="wrapper">
         <Header />
-        <Navbar /> {/* передавали в пропсах friendsData={ props.state.friendsPage.friendsData } */}
+        <Navbar />
         <main className="main">
           <Route path='/profile' render={ () => <Profile /> }/>
           <Route path='/dialogs' render={ () => <DialogsContainer /> }/>
           <Route path='/news' component={News}/>
           <Route path='/music' component={Music}/>
           <Route path='/settings' component={Settings}/>
-          <Route path='/friends' render={ () => <FriendsContainer /> } /> {/* передавали в пропсах friendsData={ props.state.friendsPage.friendsData } */}
+          <Route path='/friends' render={ () => <FriendsContainer /> } />
         </main>
       </div>
   );

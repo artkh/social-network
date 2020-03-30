@@ -2,21 +2,23 @@ import React from 'react';
 import s from './Friends.module.scss';
 import * as axios from 'axios';
 
-const Friends = (props) => {
+class Friends extends React.Component {
 
-  let showFriends = () => {
-    if(props.friendsData.length === 0) {
-      axios.get("https://artkh.github.io/json/friends.json").then( response => {
-        props.setFriends(response.data.items);
-      })
+  constructor(props) {
+    super(props);
+
+    if(this.props.friendsData.length === 0) {
+      axios.get("https://artkh.github.io/json/friends.json").then(response => {
+        this.props.setFriends(response.data.items);
+      });
     }
+    
   }
 
-  return (
-    <div className={s.friends}>
-      <button onClick={showFriends}>show</button>
+  render() {
+    return <div className={s.friends}>
       {
-        props.friendsData.map( f => 
+        this.props.friendsData.map( f => 
           <div className={s.friend} key={f.id}>
             <div className={s.shortInfo}>
               <div className={s.friend_image}>
@@ -24,8 +26,8 @@ const Friends = (props) => {
               </div>
               <div className={s.friend_button}>
                 {f.subscribe ? 
-                <button type="button" onClick={ () => {props.unfollow(f.id)} }>unfollow</button> :
-                <button type="button" onClick={ () => {props.follow(f.id)} }>follow</button>}
+                <button type="button" onClick={ () => {this.props.unfollow(f.id)} }>unfollow</button> :
+                <button type="button" onClick={ () => {this.props.follow(f.id)} }>follow</button>}
               </div>
             </div>
             <div className={s.moreInfo}>
@@ -45,22 +47,7 @@ const Friends = (props) => {
         )
       }
     </div>
-  )
-  
-  // let friendsItem = props.friendsData.map(f => <Friend id={f.id}
-  //   firstName={f.firstName}
-  //   lastName={f.lastName}
-  //   img={f.img}
-  //   country={f.country}
-  //   town={f.town}
-  //   status={f.status}
-  //   subscribe={f.subscribe} />);
-  
-  // return (
-  //   <div className={s.friends}>
-  //     { friendsItem }
-  //   </div>
-  // );
+  }
 }
 
 export default Friends;
