@@ -4,15 +4,12 @@ import * as axios from 'axios';
 
 class Friends extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    if(this.props.friendsData.length === 0) {
+  componentDidMount() {
+    if (this.props.friendsData.length === 0) {
       axios.get("https://artkh.github.io/json/friends.json").then(response => {
         this.props.setFriends(response.data.items);
       });
     }
-    
   }
 
   render() {
