@@ -5,15 +5,30 @@ import * as axios from 'axios';
 class Friends extends React.Component {
 
   componentDidMount() {
-    if (this.props.friendsData.length === 0) {
-      axios.get("https://artkh.github.io/json/friends.json").then(response => {
-        this.props.setFriends(response.data.items);
-      });
-    }
+    axios.get("https://artkh.github.io/json/friends.json").then(response => {
+      this.props.setFriends(response.data.items);
+      this.props.setCountFriends(response.data.totalCount);
+    });
+  }
+
+  onPage = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber);
   }
 
   render() {
+
+    let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
+    }
+
     return <div className={s.friends}>
+      <div>
+        { pages.map( p => { return <span 
+        onClick={ () => { this.onPage(p) } } 
+        className={ this.props.currentPage === p && s.selectedPage}> {p} </span> } ) }
+      </div>
       {
         this.props.friendsData.map( f => 
           <div className={s.friend} key={f.id}>
