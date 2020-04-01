@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Friends.module.scss';
-
+import Preloader from '../elements/Preloader';
 
 const Friends = (props) => {
 
@@ -9,7 +9,7 @@ const Friends = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
+  
   return (
     <div className={s.friends}>
       <div>
@@ -19,6 +19,7 @@ const Friends = (props) => {
             className={props.currentPage === p && s.selectedPage}> {p} </span>
         })}
       </div>
+      {props.isLoading ? <Preloader /> : null}
       {
         props.friendsData.map(f =>
           <div className={s.friend} key={f.id}>

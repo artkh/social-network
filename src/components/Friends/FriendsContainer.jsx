@@ -1,21 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Friends from './Friends';
-import { followAC, unfollowAC, setFriendsAC, setCountFriendsAC, setCurrentPageAC } from '../../redux/friends-reducer';
+import { followAC, unfollowAC, setFriendsAC, setCountFriendsAC, setCurrentPageAC, toggleIsLoadingAC } from '../../redux/friends-reducer';
 import * as axios from 'axios';
 
 class FriendsContainer extends React.Component {
 
   componentDidMount() {
+    this.props.toggleIsLoading(true);
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+      this.props.toggleIsLoading(false);
       this.props.setFriends(response.data.items);
       this.props.setCountFriends(response.data.totalCount);
     });
   }
-
+  
   onPage = (pageNumber) => {
+    this.props.toggleIsLoading(true);
     this.props.setCurrentPage(pageNumber);
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+      this.props.toggleIsLoading(false);
       this.props.setFriends(response.data.items);
       this.props.setCountFriends(response.data.totalCount);
     });
@@ -28,7 +32,8 @@ class FriendsContainer extends React.Component {
       friendsData={this.props.friendsData}
       onPage={this.onPage}
       follow={this.props.follow}
-      unfollow={this.props.unfollow} />
+      unfollow={this.props.unfollow}
+      isLoading={this.props.isLoading} />
   }
 }
 
@@ -37,7 +42,8 @@ let mapStateToProps = (state) => {
     friendsData: state.friendsPage.friendsData,
     totalCount: state.friendsPage.totalCount,
     pageSize: state.friendsPage.pageSize,
-    currentPage: state.friendsPage.currentPage
+    currentPage: state.friendsPage.currentPage,
+    isLoading: state.friendsPage.isLoading
   }
 };
 
@@ -53,10 +59,13 @@ let mapDispatchToProps = (dispatch) => {
       dispatch( setFriendsAC(friendsData) )
     },
     setCountFriends: (totalCount) => {
-      dispatch(setCountFriendsAC(totalCount))
+      dispatch( setCountFriendsAC(totalCount) )
     },
     setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageAC(pageNumber))
+      dispatch( setCurrentPageAC(pageNumber) )
+    },
+    toggleIsLoading: (isLoading) => {
+      dispatch( toggleIsLoadingAC(isLoading) )
     },
   }
 }

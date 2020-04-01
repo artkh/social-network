@@ -3,12 +3,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_FRIENDS = 'SET_FRIENDS';
 const SET_COUNT_FRIENDS = 'SET_COUNT_FRIENDS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 
 let initialState = {
   friendsData: [ ],
   totalCount: 0,
   pageSize: 5,
-  currentPage: 1
+  currentPage: 1,
+  isLoading: false
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -62,6 +64,12 @@ const friendsReducer = (state = initialState, action) => {
           currentPage: action.page
         }
       }
+    case TOGGLE_IS_LOADING: {
+      return {
+        ...state,
+        isLoading: action.isLoading
+      }
+    }
     default:
       return state;
   }
@@ -72,5 +80,6 @@ export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setFriendsAC = (friendsData) => ({ type: SET_FRIENDS, friendsData });
 export const setCountFriendsAC = (totalCount) => ({ type: SET_COUNT_FRIENDS, totalCount });
 export const setCurrentPageAC = (pageNumber) => ({ type: SET_CURRENT_PAGE, page: pageNumber });
+export const toggleIsLoadingAC = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
 
 export default friendsReducer;
