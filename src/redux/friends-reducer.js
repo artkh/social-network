@@ -20,7 +20,7 @@ const friendsReducer = (state = initialState, action) => {
           ...state,
           friendsData: state.friendsData.map( f => {
             if(f.id === action.userId) {
-              return {...f, subscribe: true}
+              return {...f, followed: true}
             }
             return f;
           })
@@ -34,7 +34,7 @@ const friendsReducer = (state = initialState, action) => {
           ...state,
           friendsData: state.friendsData.map( f => {
             if(f.id === action.userId) {
-              return {...f, subscribe: false}
+              return {...f, followed: false}
             }
             return f;
           })
@@ -71,6 +71,6 @@ export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setFriendsAC = (friendsData) => ({ type: SET_FRIENDS, friendsData });
 export const setCountFriendsAC = (totalCount) => ({ type: SET_COUNT_FRIENDS, totalCount });
-export const setCurrentPageAC = (page) => ({ type: SET_CURRENT_PAGE, page });
+export const setCurrentPageAC = (pageNumber) => ({ type: SET_CURRENT_PAGE, page: pageNumber });
 
 export default friendsReducer;
