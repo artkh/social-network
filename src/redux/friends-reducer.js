@@ -64,22 +64,23 @@ const friendsReducer = (state = initialState, action) => {
           currentPage: action.page
         }
       }
-    case TOGGLE_IS_LOADING: {
-      return {
-        ...state,
-        isLoading: action.isLoading
+    case TOGGLE_IS_LOADING: 
+      {
+        return {
+          ...state,
+          isLoading: action.isLoading
+        }
       }
-    }
     default:
       return state;
   }
 };
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
-export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
-export const setFriendsAC = (friendsData) => ({ type: SET_FRIENDS, friendsData });
-export const setCountFriendsAC = (totalCount) => ({ type: SET_COUNT_FRIENDS, totalCount });
-export const setCurrentPageAC = (pageNumber) => ({ type: SET_CURRENT_PAGE, page: pageNumber });
-export const toggleIsLoadingAC = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
+export const follow = (userId) => ({ type: FOLLOW, userId });
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const setFriends = (friendsData) => ({ type: SET_FRIENDS, friendsData });
+export const setCountFriends = (totalCount) => ({ type: SET_COUNT_FRIENDS, totalCount });
+export const setCurrentPage = (pageNumber) => ({ type: SET_CURRENT_PAGE, page: pageNumber });
+export const toggleIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
 
 export default friendsReducer;
