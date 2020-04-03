@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Friends.module.scss';
 import Preloader from '../elements/Preloader';
+import { NavLink } from 'react-router-dom';
 
 const Friends = (props) => {
 
@@ -24,9 +25,11 @@ const Friends = (props) => {
         props.friendsData.map(f =>
           <div className={s.friend} key={f.id}>
             <div className={s.shortInfo}>
-              <div className={s.friend_image}>
-                <img src={f.photos.small != null ? f.photos.small : 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg'} alt="" />
-              </div>
+                <div className={s.friend_image}>
+                  <NavLink to={`/profile/${f.id}`}>
+                    <img src={f.photos.small != null ? f.photos.small : 'https://klike.net/uploads/posts/2019-03/medium/1551511829_46.jpg'} alt="" />
+                  </NavLink>
+                </div>
               <div className={s.friend_button}>
                 {f.followed ?
                   <button type="button" onClick={() => { props.unfollow(f.id) }}>unfollow</button> :
