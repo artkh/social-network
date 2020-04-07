@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Friends.module.scss';
 import Preloader from '../elements/Preloader';
 import { NavLink } from 'react-router-dom';
+import * as axios from 'axios';
 
 const Friends = (props) => {
 
@@ -9,6 +10,24 @@ const Friends = (props) => {
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
+  }
+
+  let onFollow = (userId) => {
+    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
+      { withCredentials: true, headers: { "API-KEY": "1dd127c8-5cd4-4a97-bd64-42390a8b2174" } }).then(response => {
+        if(response.data.resultCode === 0) {
+          props.follow(userId);
+        }
+      })
+  }
+
+  let onUnFollow = (userId) => {
+    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
+      { withCredentials: true, headers: { "API-KEY": "1dd127c8-5cd4-4a97-bd64-42390a8b2174" } }).then(response => {
+        if (response.data.resultCode === 0) {
+          props.unfollow(userId);
+        }
+      })
   }
   
   return (
@@ -32,8 +51,8 @@ const Friends = (props) => {
                 </div>
               <div className={s.friend_button}>
                 {f.followed ?
-                  <button type="button" onClick={() => { props.unfollow(f.id) }}>unfollow</button> :
-                  <button type="button" onClick={() => { props.follow(f.id) }}>follow</button>}
+                  <button type="button" onClick={() => { onUnFollow(f.id) }}>unfollow</button> :
+                  <button type="button" onClick={() => { onFollow(f.id) }}>follow</button>}
               </div>
             </div>
             <div className={s.moreInfo}>

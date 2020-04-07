@@ -8,7 +8,7 @@ class FriendsContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, { withCredentials: true }).then(response => {
       this.props.toggleIsLoading(false);
       this.props.setFriends(response.data.items);
       this.props.setCountFriends(response.data.totalCount);
@@ -18,7 +18,7 @@ class FriendsContainer extends React.Component {
   onPage = (pageNumber) => {
     this.props.toggleIsLoading(true);
     this.props.setCurrentPage(pageNumber);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, { withCredentials: true }).then(response => {
       this.props.toggleIsLoading(false);
       this.props.setFriends(response.data.items);
       this.props.setCountFriends(response.data.totalCount);
