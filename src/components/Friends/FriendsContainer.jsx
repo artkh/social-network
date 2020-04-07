@@ -2,26 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Friends from './Friends';
 import { follow, unfollow, setFriends, setCountFriends, setCurrentPage, toggleIsLoading } from '../../redux/friends-reducer';
-import * as axios from 'axios';
+import { usersAPI } from '../../api/api';
 
 class FriendsContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, { withCredentials: true }).then(response => {
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
       this.props.toggleIsLoading(false);
-      this.props.setFriends(response.data.items);
-      this.props.setCountFriends(response.data.totalCount);
+      this.props.setFriends(data.items);
+      this.props.setCountFriends(data.totalCount);
     });
   }
   
   onPage = (pageNumber) => {
     this.props.toggleIsLoading(true);
     this.props.setCurrentPage(pageNumber);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, { withCredentials: true }).then(response => {
+    usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
       this.props.toggleIsLoading(false);
-      this.props.setFriends(response.data.items);
-      this.props.setCountFriends(response.data.totalCount);
+      this.props.setFriends(data.items);
+      this.props.setCountFriends(data.totalCount);
     });
   }
 
