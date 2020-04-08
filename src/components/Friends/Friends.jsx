@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Friends.module.scss';
 import Preloader from '../elements/Preloader';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
+import { usersAPI } from '../../api/api';
 
 const Friends = (props) => {
 
@@ -13,18 +13,16 @@ const Friends = (props) => {
   }
 
   let onFollow = (userId) => {
-    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
-      { withCredentials: true, headers: { "API-KEY": "1dd127c8-5cd4-4a97-bd64-42390a8b2174" } }).then(response => {
-        if(response.data.resultCode === 0) {
+    usersAPI.followUser(userId).then(data => {
+        if(data.resultCode === 0) {
           props.follow(userId);
         }
       })
   }
 
   let onUnFollow = (userId) => {
-    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
-      { withCredentials: true, headers: { "API-KEY": "1dd127c8-5cd4-4a97-bd64-42390a8b2174" } }).then(response => {
-        if (response.data.resultCode === 0) {
+    usersAPI.unfollowUser(userId).then(data => {
+        if (data.resultCode === 0) {
           props.unfollow(userId);
         }
       })
