@@ -108,4 +108,28 @@ export const setFriendsThunk = (currentPage, pageSize) => {
   }
 }
 
+export const onFollowThunk = (userId) => {
+  return (dispatch) => {
+    dispatch(followingIsLoading(true, userId));
+    usersAPI.followUser(userId).then(data => {
+      if (data.resultCode === 0) {
+        dispatch(follow(userId));
+        dispatch(followingIsLoading(false, userId));
+      }
+    })
+  }
+}
+
+export const onUnFollowThunk = (userId) => {
+  return (dispatch) => {
+    dispatch(followingIsLoading(true, userId));
+    usersAPI.unfollowUser(userId).then(data => {
+      if (data.resultCode === 0) {
+        dispatch(unfollow(userId));
+        dispatch(followingIsLoading(false, userId));
+      }
+    })
+  }
+}
+
 export default friendsReducer;
