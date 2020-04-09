@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_FRIENDS = 'SET_FRIENDS';
@@ -94,5 +96,16 @@ export const setCountFriends = (totalCount) => ({ type: SET_COUNT_FRIENDS, total
 export const setCurrentPage = (pageNumber) => ({ type: SET_CURRENT_PAGE, page: pageNumber });
 export const toggleIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
 export const followingIsLoading = (isLoading, userId) => ({ type: FOLLOWING_IS_PROGRESS, isLoading, userId });
+
+export const setFriendsThunk = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toggleIsLoading(true));
+    usersAPI.getUsers(currentPage, pageSize).then(data => {
+      dispatch(toggleIsLoading(false));
+      dispatch(setFriends(data.items));
+      dispatch(setCountFriends(data.totalCount));
+    });
+  }
+}
 
 export default friendsReducer;
