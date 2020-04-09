@@ -13,17 +13,21 @@ const Friends = (props) => {
   }
 
   let onFollow = (userId) => {
+    props.followingIsLoading(true, userId);
     usersAPI.followUser(userId).then(data => {
         if(data.resultCode === 0) {
           props.follow(userId);
+          props.followingIsLoading(false, userId);
         }
       })
   }
 
   let onUnFollow = (userId) => {
+    props.followingIsLoading(true, userId);
     usersAPI.unfollowUser(userId).then(data => {
         if (data.resultCode === 0) {
           props.unfollow(userId);
+          props.followingIsLoading(false, userId);
         }
       })
   }
@@ -49,8 +53,8 @@ const Friends = (props) => {
                 </div>
               <div className={s.friend_button}>
                 {f.followed ?
-                  <button type="button" onClick={() => { onUnFollow(f.id) }}>unfollow</button> :
-                  <button type="button" onClick={() => { onFollow(f.id) }}>follow</button>}
+                  <button type="button" disabled={props.followingIsProgress.some(id => id === f.id)} onClick={() => { onUnFollow(f.id) }}>unfollow</button> :
+                  <button type="button" disabled={props.followingIsProgress.some(id => id === f.id)} onClick={() => { onFollow(f.id) }}>follow</button>}
               </div>
             </div>
             <div className={s.moreInfo}>

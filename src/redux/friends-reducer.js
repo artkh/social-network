@@ -4,13 +4,15 @@ const SET_FRIENDS = 'SET_FRIENDS';
 const SET_COUNT_FRIENDS = 'SET_COUNT_FRIENDS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
+const FOLLOWING_IS_PROGRESS = 'FOLLOWING_IS_PROGRESS';
 
 let initialState = {
   friendsData: [ ],
   totalCount: 0,
   pageSize: 5,
   currentPage: 1,
-  isLoading: false
+  isLoading: false,
+  followingIsProgress: [],
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -71,6 +73,15 @@ const friendsReducer = (state = initialState, action) => {
           isLoading: action.isLoading
         }
       }
+    case FOLLOWING_IS_PROGRESS:
+      {
+        return {
+          ...state,
+          followingIsProgress: action.isLoading ?
+          [...state.followingIsProgress, action.userId] :
+          state.followingIsProgress.filter(id => id != action.userId)
+        }
+      }
     default:
       return state;
   }
@@ -82,5 +93,6 @@ export const setFriends = (friendsData) => ({ type: SET_FRIENDS, friendsData });
 export const setCountFriends = (totalCount) => ({ type: SET_COUNT_FRIENDS, totalCount });
 export const setCurrentPage = (pageNumber) => ({ type: SET_CURRENT_PAGE, page: pageNumber });
 export const toggleIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
+export const followingIsLoading = (isLoading, userId) => ({ type: FOLLOWING_IS_PROGRESS, isLoading, userId });
 
 export default friendsReducer;
