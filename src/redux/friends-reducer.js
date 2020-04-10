@@ -108,7 +108,7 @@ export const setFriendsThunk = (currentPage, pageSize) => {
   }
 }
 
-export const onFollowThunk = (userId) => {
+export const followThunk = (userId) => {
   return (dispatch) => {
     dispatch(followingIsLoading(true, userId));
     usersAPI.followUser(userId).then(data => {
@@ -120,7 +120,7 @@ export const onFollowThunk = (userId) => {
   }
 }
 
-export const onUnFollowThunk = (userId) => {
+export const unfollowThunk = (userId) => {
   return (dispatch) => {
     dispatch(followingIsLoading(true, userId));
     usersAPI.unfollowUser(userId).then(data => {

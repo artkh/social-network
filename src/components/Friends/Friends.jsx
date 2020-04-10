@@ -12,11 +12,11 @@ const Friends = (props) => {
   }
 
   let onFollow = (userId) => {
-    props.onFollowThunk(userId);
+    props.followThunk(userId);
   }
 
   let onUnFollow = (userId) => {
-    props.onUnFollowThunk(userId);
+    props.unfollowThunk(userId);
   }
   
   return (
