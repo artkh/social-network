@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Friends from './Friends';
 import { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk } from '../../redux/friends-reducer';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class FriendsContainer extends React.Component {
 
@@ -39,14 +40,12 @@ let mapStateToProps = (state) => {
   }
 };
 
-// let mapDispatchToProps = (dispatch) => {
-//   return {
-//     follow: (userId) => {
-//       dispatch( followAC(userId) )
-//     },
-//   }
-// }
+export default compose(
+  connect(mapStateToProps, { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk }),
+  withAuthRedirect
+)
+(FriendsContainer)
 
-let AuthRedirectComponent = withAuthRedirect(FriendsContainer);
+// let AuthRedirectComponent = withAuthRedirect(FriendsContainer);
 
-export default connect(mapStateToProps, { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk })(AuthRedirectComponent);
+// export default connect(mapStateToProps, { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk })(AuthRedirectComponent);
