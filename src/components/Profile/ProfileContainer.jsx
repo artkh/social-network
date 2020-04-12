@@ -24,10 +24,10 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    profileData: state.profilePage.profileData,
-    isAuth: state.auth.isAuth
+    profileData: state.profilePage.profileData
   }
 };
+
 
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 

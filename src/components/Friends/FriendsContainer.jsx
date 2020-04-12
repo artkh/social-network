@@ -35,8 +35,7 @@ let mapStateToProps = (state) => {
     pageSize: state.friendsPage.pageSize,
     currentPage: state.friendsPage.currentPage,
     isLoading: state.friendsPage.isLoading,
-    followingIsProgress: state.friendsPage.followingIsProgress,
-    isAuth: state.auth.isAuth
+    followingIsProgress: state.friendsPage.followingIsProgress
   }
 };
 
