@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Friends from './Friends';
 import { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk } from '../../redux/friends-reducer';
+import { withAuthRedirect } from '../hoc/withAuthRedirect';
 
 class FriendsContainer extends React.Component {
 
@@ -34,7 +35,8 @@ let mapStateToProps = (state) => {
     pageSize: state.friendsPage.pageSize,
     currentPage: state.friendsPage.currentPage,
     isLoading: state.friendsPage.isLoading,
-    followingIsProgress: state.friendsPage.followingIsProgress
+    followingIsProgress: state.friendsPage.followingIsProgress,
+    isAuth: state.auth.isAuth
   }
 };
 
@@ -46,4 +48,6 @@ let mapStateToProps = (state) => {
 //   }
 // }
 
-export default connect(mapStateToProps, { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk })(FriendsContainer);
+let AuthRedirectComponent = withAuthRedirect(FriendsContainer);
+
+export default connect(mapStateToProps, { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk })(AuthRedirectComponent);
