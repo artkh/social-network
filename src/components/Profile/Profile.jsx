@@ -20,7 +20,8 @@ const Profile = (props) => {
         lookingJobDesc={props.profileData.lookingForAJobDescription}
         fullName={props.profileData.fullName}
         id={props.profileData.userId}
-        smallPhoto={props.profileData.photos.small} />
+        smallPhoto={props.profileData.photos.small}
+        textStatus={props.textStatus} />
       <PostsContainer />
     </div>
   );

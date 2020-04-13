@@ -1,7 +1,9 @@
 import React from 'react';
 import s from './UserInfo.module.css';
+import StatusUser from './StatusUser';
 
 const UserInfo = (props) => {
+
   return (
     <div className={s.main__user} key={props.id}>
       <div className={s.main__user_image}>
@@ -11,6 +13,9 @@ const UserInfo = (props) => {
       <div className={s.main__user_info}>
         <div className={s.name}>
           {props.fullName}
+        </div>
+        <div className={s.status}>
+          <StatusUser textStatus={props.textStatus} />
         </div>
         <div className={s.aboutMe}>
           About me: {props.aboutMe}
