@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE = 'SET_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const UPDATE_STATUS = 'UPDATE_STATUS';
 
 let initialState = {
   postsData: [{
@@ -58,6 +59,13 @@ const profileReducer = (state = initialState, action) => {
           textStatus: action.textStatus
         }
       }
+    case UPDATE_STATUS:
+      {
+        return {
+          ...state,
+          textStatus: action.changeStatus
+        }
+      }
     default:
       return state;
   }
@@ -65,8 +73,9 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostTextActionCreator = (changeText) => ({ type: UPDATE_NEW_POST_TEXT, changeText: changeText });
-export const setProfile = (profileData) => ({ type: SET_PROFILE, profileData});
-export const setStatus = (textStatus) => ({ type: SET_STATUS, textStatus});
+export const setProfile = (profileData) => ({ type: SET_PROFILE, profileData });
+export const setStatus = (textStatus) => ({ type: SET_STATUS, textStatus });
+export const updateStatus = (changeStatus) => ({ type: UPDATE_STATUS, changeStatus})
 
 export const getProfileThunk = (userId) => {
   return (dispatch) => {
@@ -80,6 +89,16 @@ export const getStatusThunk = (userId) => {
   return (dispatch) => {
     usersAPI.getStatus(userId).then(data => {
       dispatch(setStatus(data));
+    })
+  }
+}
+
+export const updateStatusThunk = (changeStatus) => {
+  return (dispatch) => {
+    usersAPI.updateStatus(changeStatus).then(data => {
+      if(data.resultCode === 0) {
+        dispatch(updateStatus(changeStatus))
+      }
     })
   }
 }

@@ -2,33 +2,43 @@ import React from 'react';
 
 class StatusUser extends React.Component {
 
-    state = {
-        editMode: false,
-    }
+  state = {
+    editMode: false,
+    status: this.props.textStatus
+  }
 
-    onChangeStatus() {
-        this.setState({
-            editMode: true
-        });
-    }
+  activatedEditMode = () => {
+    this.setState({
+      editMode: true
+    });
+  }
 
-    onNewStatus() {
-        this.setState({
-            editMode: false
-        })
-    }
+  deactivatedEditMode = () => {
+    this.setState({
+      editMode: false
+    });
+    this.props.updateStatus(this.state.status);
+  }
 
-    render() {
-        return (
-            <div>
-                {
-                    this.state.editMode ?
-                        <input autoFocus={true} onBlur={ this.onNewStatus.bind(this)} type="text" value={this.props.textStatus} /> :
-                        <span onClick={ this.onChangeStatus.bind(this) }>{this.props.textStatus}</span>
-                }
-            </div>
-        )
-    }
+  changeStatus = (e) => {
+    let changeText = e.target.value;
+    this.setState({
+      status: changeText
+    })
+    // this.props.updateStatus(changeText);
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.state.editMode ?
+            <input autoFocus={ true } onBlur={ this.deactivatedEditMode } onChange={ this.changeStatus } type="text" value={ this.state.status } /> :
+            <span onClick={ this.activatedEditMode }>{ this.props.textStatus || 'new status...' }</span>
+        }
+      </div>
+    )
+  }
 }
 
 export default StatusUser;

@@ -21,7 +21,8 @@ const Profile = (props) => {
         fullName={props.profileData.fullName}
         id={props.profileData.userId}
         smallPhoto={props.profileData.photos.small}
-        textStatus={props.textStatus} />
+        textStatus={props.textStatus}
+        updateStatus={props.updateStatus} />
       <PostsContainer />
     </div>
   );

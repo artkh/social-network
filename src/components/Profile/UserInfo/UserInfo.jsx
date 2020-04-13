@@ -15,7 +15,7 @@ const UserInfo = (props) => {
           {props.fullName}
         </div>
         <div className={s.status}>
-          <StatusUser textStatus={props.textStatus} />
+          <StatusUser textStatus={props.textStatus} updateStatus={props.updateStatus} />
         </div>
         <div className={s.aboutMe}>
           About me: {props.aboutMe}

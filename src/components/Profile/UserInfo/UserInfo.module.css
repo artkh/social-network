@@ -22,8 +22,14 @@
 }
 
 .name {
-  margin-bottom: 10px;
   font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.status>div {
+  display: inline-block;
+  color: rgb(170, 170, 170);
+  margin-bottom: 10px;
 }
 
 
