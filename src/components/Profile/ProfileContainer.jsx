@@ -37,7 +37,7 @@ export default compose(
   connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk }),
   withRouter
 )
-(ProfileContainer)
+(ProfileContainer);
 
 
 // let AuthRedirectComponent = withAuthRedirect(ProfileContainer);

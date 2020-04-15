@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -79,7 +79,7 @@ export const updateStatus = (changeStatus) => ({ type: UPDATE_STATUS, changeStat
 
 export const getProfileThunk = (userId) => {
   return (dispatch) => {
-    usersAPI.getProfile(userId).then(data => {
+    profileAPI.getProfile(userId).then(data => {
       dispatch(setProfile(data));
     })
   }
@@ -87,7 +87,7 @@ export const getProfileThunk = (userId) => {
 
 export const getStatusThunk = (userId) => {
   return (dispatch) => {
-    usersAPI.getStatus(userId).then(data => {
+    profileAPI.getStatus(userId).then(data => {
       dispatch(setStatus(data));
     })
   }
@@ -95,7 +95,7 @@ export const getStatusThunk = (userId) => {
 
 export const updateStatusThunk = (changeStatus) => {
   return (dispatch) => {
-    usersAPI.updateStatus(changeStatus).then(data => {
+    profileAPI.updateStatus(changeStatus).then(data => {
       if(data.resultCode === 0) {
         dispatch(updateStatus(changeStatus))
       }

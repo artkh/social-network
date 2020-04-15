@@ -25,7 +25,14 @@ class StatusUser extends React.Component {
     this.setState({
       status: changeText
     })
-    // this.props.updateStatus(changeText);
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevProps.textStatus !== this.props.textStatus) {
+      this.setState({
+        status: this.props.textStatus
+      })
+    }
   }
 
   render() {
