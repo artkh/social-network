@@ -29,6 +29,9 @@ class StatusUser extends React.Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     if(prevProps.textStatus !== this.props.textStatus) {
+      //если предыдущий статус из пропсов не равен текущему,
+      //значит статус из стейта, который показывается в инпуте при клике
+      //равен текущему статусу из пропсов
       this.setState({
         status: this.props.textStatus
       })

@@ -16,13 +16,13 @@ const App = (props) => {
   return (
       <div className="wrapper">
         <HeaderContainer />
-        <Navbar /> 
+        <Navbar />
         <main className="main">
           <Route path='/profile/:userId?' render={ () => <ProfileContainer /> }/>
           <Route path='/dialogs' render={ () => <DialogsContainer /> }/>
-          <Route path='/news' component={News}/>
-          <Route path='/music' component={Music}/>
-          <Route path='/settings' component={Settings}/>
+          <Route path='/news' component={News} />
+          <Route path='/music' component={Music} />
+          <Route path='/settings' component={Settings} />
           <Route path='/friends' render={ () => <FriendsContainer /> } />
           <Route path='/login' render={ () => <Login /> } />
         </main>
