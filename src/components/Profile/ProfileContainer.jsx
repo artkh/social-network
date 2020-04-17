@@ -38,10 +38,3 @@ export default compose(
   withRouter
 )
 (ProfileContainer);
-
-
-// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
-// let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
-// export default connect(mapStateToProps, { getProfileThunk })(WithUrlDataContainerComponent);
