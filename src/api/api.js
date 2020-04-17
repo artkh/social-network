@@ -17,7 +17,7 @@ export const usersAPI = {
   },
   unfollowUser(userId) {
     return instance.delete(`follow/${userId}`).then(response => response.data);
-  }
+  },
 }
 
 export const profileAPI = {
@@ -29,11 +29,14 @@ export const profileAPI = {
   },
   updateStatus(status) {
     return instance.put('/profile/status', {status: status}).then(response => response.data);
-  }
+  },
 }
 
 export const loginAPI = {
   getLogin() {
     return instance.get('auth/me').then(response => response.data);
+  },
+  postAuthorized(email, password, rememberMe) {
+    return instance.post('auth/login').then(response => response.data);
   }
 }

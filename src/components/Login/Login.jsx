@@ -1,7 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { postAuthThunk } from '../../redux/auth-reducer';
 
 const LoginForm = (props) => {
+
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -15,7 +17,7 @@ const LoginForm = (props) => {
         <label htmlFor="rememberMe">Remember me</label>
       </div>
       <div>
-        <button>submit</button> 
+        <button type={'submit'}>submit</button> 
       </div>
     </form>
   )
@@ -25,7 +27,7 @@ const LoginReduxForm = reduxForm({ form: 'Login' })(LoginForm);
 
 const Login = (props) => {
   const onSubmit = (dataForm) => {
-    console.log(dataForm);
+    postAuthThunk(dataForm.login, dataForm.password, dataForm.rememberMe)
   }
   return (
     <div>
