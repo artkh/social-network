@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
   dialogsData: [{
@@ -59,7 +58,6 @@ let initialState = {
         class: 'inbox',
       },
     ],
-    newMessageText: '',
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -72,30 +70,19 @@ const dialogsReducer = (state = initialState, action) => {
         id: 6,
         name: 'Me',
         img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png',
-        message: state.newMessageText,
+        message: action.message,
         class: 'outbox',
       };
       let copyState = {...state};
       copyState.messagesData = [...state.messagesData];
       copyState.messagesData.push(newMessage);
-      copyState.newMessageText = '';
       return copyState;
       }
-
-    case UPDATE_NEW_MESSAGE_TEXT:
-
-      {
-      let copyState = {...state};
-      copyState.newMessageText = action.changeTextMessage;
-      return copyState;
-      }
-
     default:
       return state;
   }
 }
 
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE});
-export const changeMessageActionCreator = (changeTextMessage) => ({ type: UPDATE_NEW_MESSAGE_TEXT, changeTextMessage: changeTextMessage});
+export const sendMessageActionCreator = (message) => ({ type: SEND_MESSAGE, message});
 
 export default dialogsReducer;
