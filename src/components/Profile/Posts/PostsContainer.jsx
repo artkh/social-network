@@ -1,6 +1,7 @@
 import Posts from './Posts';
 import { addPostActionCreator } from '../../../redux/profile-reducer';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 
 let mapStateToProps = (state) => {
   return {
@@ -12,6 +13,7 @@ let mapDispatchToProps = (dispatch) => {
   return {
     addPost: (postText) => {
       dispatch(addPostActionCreator(postText));
+      dispatch(reset('Post'));
     },
   }
 }
