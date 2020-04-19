@@ -1,16 +1,20 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { postAuthThunk } from '../../redux/auth-reducer';
+import { Input } from '../elements/form/FormsControl';
+import { required } from '../utilites/validatorsForm/validators';
 
 const LoginForm = (props) => {
 
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field component={'input'} name={'login'} placeholder={'login'} />
+        <Field component={Input} name={'login'} placeholder={'login'}
+          validate={[required]} />
       </div>
       <div>
-        <Field component={'input'} name={'password'} placeholder={'password'} />
+        <Field component={Input} name={'password'} placeholder={'password'}
+          validate={[required]} />
       </div>
       <div>
         <Field component={'input'} type={'checkbox'} name={'rememberMe'} id={'rememberMe'} />

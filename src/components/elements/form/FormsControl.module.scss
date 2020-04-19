@@ -1,0 +1,11 @@
+.formsControl.error {
+  textarea,
+  input {
+    border: 1px solid red;
+  }
+  span {
+    color: red;
+    text-align: left;
+    display: block;
+  }
+}

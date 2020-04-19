@@ -14,7 +14,7 @@
   margin-bottom: 10px;
 }
 
-.main__posts_form .text {
+.main__posts_form textarea {
   width: 100%;
   height: 5em;
   background-color: #f5f6f7;
@@ -25,11 +25,11 @@
   margin-bottom: 10px;
 }
 
-.main__posts_form .text:focus::placeholder {
+.main__posts_form textarea:focus::placeholder {
   color: transparent;
 }
 
-.main__posts_form .btn {
+.main__posts_form button {
   background-color: rgba(144, 216, 116, 0.945);
   padding: 8px 15px;
   color: #fff;
