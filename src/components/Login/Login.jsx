@@ -5,6 +5,7 @@ import { Input } from '../elements/form/FormsControl';
 import { required } from '../utilites/validatorsForm/validators';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import s from '../elements/form/FormsControl.module.scss';
 
 const LoginForm = (props) => {
 
@@ -18,6 +19,7 @@ const LoginForm = (props) => {
         <Field component={Input} name={'password'} placeholder={'password'}
           validate={[required]} type={'password'} />
       </div>
+      { props.error ? <div className={s.errorMessage}>{props.error}</div> : null }
       <div>
         <Field component={'input'} type={'checkbox'} name={'rememberMe'} id={'rememberMe'} />
         <label htmlFor="rememberMe">Remember me</label>
