@@ -1,8 +1,10 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { postAuthThunk } from '../../redux/auth-reducer';
+import { loginAuthThunk } from '../../redux/auth-reducer';
 import { Input } from '../elements/form/FormsControl';
 import { required } from '../utilites/validatorsForm/validators';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const LoginForm = (props) => {
 
@@ -10,11 +12,11 @@ const LoginForm = (props) => {
     <form onSubmit={props.handleSubmit}>
       <div>
         <Field component={Input} name={'login'} placeholder={'login'}
-          validate={[required]} />
+          validate={[required]} type={'email'} />
       </div>
       <div>
         <Field component={Input} name={'password'} placeholder={'password'}
-          validate={[required]} />
+          validate={[required]} type={'password'} />
       </div>
       <div>
         <Field component={'input'} type={'checkbox'} name={'rememberMe'} id={'rememberMe'} />
@@ -29,16 +31,29 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: 'Login' })(LoginForm);
 
-const Login = (props) => {
-  const onSubmit = (dataForm) => {
-    postAuthThunk(dataForm.login, dataForm.password, dataForm.rememberMe)
+export class Login extends React.Component {
+
+  onSubmit = (dataForm) => {
+    this.props.loginAuthThunk(dataForm.login, dataForm.password, dataForm.rememberMe);
   }
-  return (
-    <div>
-      <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
-    </div>
-  )
+
+  render() {
+
+    if(this.props.isAuth) return <Redirect to={'/profile'} />
+
+    return (
+      <div>
+        <h1>Login</h1>
+        <LoginReduxForm onSubmit={this.onSubmit} />
+      </div>
+    )
+  }
 }
 
-export default Login;
+let mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
+
+export default connect(mapStateToProps, { loginAuthThunk })(Login);
