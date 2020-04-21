@@ -22,6 +22,18 @@
       display: inline-block;
       text-decoration: none;
       color: #fff;
+      margin-left: 8px;
+    }
+    button {
+      border: none;
+      border-radius: 3px;
+      background-color: rgb(116, 192, 111);
+      color: #fff;
+      padding: 3px 8px;
+      &:hover {
+        background-color: rgb(103, 168, 99);
+        cursor: pointer;
+      }
     }
   }
 }

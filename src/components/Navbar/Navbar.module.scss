@@ -12,6 +12,9 @@
       color: #1d2129;
       font-size: 20px;
       margin-bottom: 3px;
+      &:hover {
+        color: gold;
+      }
     }
     a.active {
       color: gold;

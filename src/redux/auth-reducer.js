@@ -30,7 +30,7 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_US
 
 export const getLoginThunk = () => {
   return (dispatch) => {
-    loginAPI.getLogin().then(data => {
+    return loginAPI.getLogin().then(data => { //возвращаем promise в initializeApp
       if(data.resultCode === 0) {
         let {id, email, login} = data.data;
         dispatch(setAuthUserData(id, email, login, true));

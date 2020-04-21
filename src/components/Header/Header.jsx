@@ -10,9 +10,8 @@ const Header = (props) => {
           <img src="https://intercom-online.zp.ua/wp-content/themes/net/img/facebook.png" alt="" />
         </a>
         <div className={s.auth}>
-          {/* {props.isAuth ? <button onClick={props.logout}>log out</button> : null} */}
-          <NavLink to='/login' className={s.auth__login}> {props.isAuth ?
-            <div> <button onClick={props.logout}>log out</button> {props.login} </div> : 'login'} </NavLink>
+          {props.isAuth ? <button onClick={props.logout}>exit</button> : null}
+          <NavLink to='/login' className={s.auth__login}> {props.isAuth ? props.login : 'login'} </NavLink>
         </div>
       </div>
     </header>
