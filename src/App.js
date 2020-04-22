@@ -10,14 +10,14 @@ import FriendsContainer from './components/Friends/FriendsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import { initializeApp } from './redux/app-reducer';
+import { initializeAppThunk } from './redux/app-reducer';
 import { connect } from 'react-redux';
 import Preloader from './components/elements/Preloader';
 
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.initializeApp();
+    this.props.initializeAppThunk();
   }
 
   render() {
@@ -48,4 +48,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { initializeApp })(App);
+export default connect(mapStateToProps, { initializeAppThunk })(App);

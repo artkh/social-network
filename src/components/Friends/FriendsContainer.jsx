@@ -4,6 +4,7 @@ import Friends from './Friends';
 import { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk } from '../../redux/friends-reducer';
 // import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { getFriendsData, getTotalCount, getPageSize, getCurrentPage, getIsLoading, getFollowingIsProgress } from '../../redux/friends-selector';
 
 class FriendsContainer extends React.Component {
 
@@ -31,12 +32,12 @@ class FriendsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    friendsData: state.friendsPage.friendsData,
-    totalCount: state.friendsPage.totalCount,
-    pageSize: state.friendsPage.pageSize,
-    currentPage: state.friendsPage.currentPage,
-    isLoading: state.friendsPage.isLoading,
-    followingIsProgress: state.friendsPage.followingIsProgress
+    friendsData: getFriendsData(state),
+    totalCount: getTotalCount(state),
+    pageSize: getPageSize(state),
+    currentPage: getCurrentPage(state),
+    isLoading: getIsLoading(state),
+    followingIsProgress: getFollowingIsProgress(state)
   }
 };
 

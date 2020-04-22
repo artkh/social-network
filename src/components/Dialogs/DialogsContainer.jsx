@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { reset } from 'redux-form';
+import { getDialogsData, getMessagesData } from '../../redux/dialogs-selector';
 
 let mapStateToProps = (state) => {
   return {
-    dialogsData: state.dialogsPage.dialogsData,
-    messagesData: state.dialogsPage.messagesData,
-    newMessageText: state.dialogsPage.newMessageText
+    dialogsData: getDialogsData(state),
+    messagesData: getMessagesData(state)
   }
 }
 

@@ -5,6 +5,7 @@ import { getProfileThunk, getStatusThunk, updateStatusThunk } from '../../redux/
 import { withRouter } from 'react-router-dom';
 // import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { getProfileData, getTextStatus, getAuthUserId } from '../../redux/profile-selectors';
 
 class ProfileContainer extends React.Component {
 
@@ -31,9 +32,9 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    profileData: state.profilePage.profileData,
-    textStatus: state.profilePage.textStatus,
-    authUserId: state.auth.userId
+    profileData: getProfileData(state),
+    textStatus: getTextStatus(state),
+    authUserId: getAuthUserId(state)
   }
 };
 
