@@ -4,7 +4,7 @@ import Friends from './Friends';
 import { setCurrentPage, setFriendsThunk, followThunk, unfollowThunk } from '../../redux/friends-reducer';
 // import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getFriendsData, getTotalCount, getPageSize, getCurrentPage, getIsLoading, getFollowingIsProgress } from '../../redux/friends-selector';
+import { getTotalCount, getPageSize, getCurrentPage, getIsLoading, getFollowingIsProgress, getFriendsData } from '../../redux/friends-selector';
 
 class FriendsContainer extends React.Component {
 

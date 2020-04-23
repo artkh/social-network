@@ -1,6 +1,12 @@
-export const getFriendsData = (state) => {
+import {createSelector} from 'reselect';
+
+const getFriendsDataSelector = (state) => {
     return state.friendsPage.friendsData;
 }
+
+export const getFriendsData = createSelector(getFriendsDataSelector, (friends) => {
+    return friends;
+})
 
 export const getTotalCount = (state) => {
     return state.friendsPage.totalCount;
