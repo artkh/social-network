@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './UserInfo.module.css';
-import StatusUser from './StatusUser';
+// import StatusUser from './StatusUser';
+import StatusUserWithHooks from './StatusUserWithHooks';
 
 const UserInfo = (props) => {
 
@@ -15,7 +16,7 @@ const UserInfo = (props) => {
           {props.fullName}
         </div>
         <div className={s.status}>
-          <StatusUser textStatus={props.textStatus} updateStatus={props.updateStatus} />
+          <StatusUserWithHooks textStatus={props.textStatus} updateStatus={props.updateStatus} />
         </div>
         <div className={s.aboutMe}>
           About me: {props.aboutMe}

@@ -5,7 +5,7 @@ const getFriendsDataSelector = (state) => {
 }
 
 export const getFriendsData = createSelector(getFriendsDataSelector, (friends) => {
-    return friends;
+    return friends; //сделан для примера рыботы реселекторов
 })
 
 export const getTotalCount = (state) => {
