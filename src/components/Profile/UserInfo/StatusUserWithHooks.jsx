@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const StatusUserWithHooks = (props) => {
 
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.textStatus);
+
+  useEffect( () => {
+    setStatus(props.textStatus);
+  }, [props.textStatus])
 
   const activatedEditMode = () => {
     setEditMode(true);
