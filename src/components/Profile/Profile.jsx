@@ -6,7 +6,6 @@ import PostsContainer from './Posts/PostsContainer';
 import Preloader from '../elements/Preloader';
 
 const Profile = (props) => {
-
   if(!props.profileData) {
     return <Preloader />
   }

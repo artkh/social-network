@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './UserInfo.module.css';
-// import StatusUser from './StatusUser';
 import StatusUserWithHooks from './StatusUserWithHooks';
 
 const UserInfo = (props) => {

@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const SET_PROFILE = 'SET_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_STATUS = 'UPDATE_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
   postsData: [{
@@ -58,6 +59,13 @@ const profileReducer = (state = initialState, action) => {
           textStatus: action.changeStatus
         }
       }
+    case DELETE_POST:
+      {
+        return {
+          ...state,
+          postsData: state.postsData.filter(p => p.id != action.postId)
+        }
+      }
     default:
       return state;
   }
@@ -66,7 +74,8 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (postText) => ({ type: ADD_POST, postText });
 export const setProfile = (profileData) => ({ type: SET_PROFILE, profileData });
 export const setStatus = (textStatus) => ({ type: SET_STATUS, textStatus });
-export const updateStatus = (changeStatus) => ({ type: UPDATE_STATUS, changeStatus})
+export const updateStatus = (changeStatus) => ({ type: UPDATE_STATUS, changeStatus});
+export const deletePost = (postId) => ({ type: DELETE_POST, postId});
 
 export const getProfileThunk = (userId) => {
   return (dispatch) => {
