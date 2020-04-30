@@ -10,6 +10,7 @@
     display: grid;
     grid-template-columns: 100px 1fr;
     grid-gap: 10px;
+    margin-bottom: 10px;
     .shortInfo {
         text-align: center;
         // button {
@@ -65,8 +66,4 @@
             }
         }
     }
-}
-.selectedPage {
-    font-weight: 600;
-    font-size: 20px;
 }
