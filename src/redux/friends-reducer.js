@@ -11,7 +11,7 @@ const FOLLOWING_IS_PROGRESS = 'FOLLOWING_IS_PROGRESS';
 let initialState = {
   friendsData: [ ],
   totalCount: 0,
-  pageSize: 5,
+  pageSize: 10,
   currentPage: 1,
   isLoading: false,
   followingIsProgress: [],
