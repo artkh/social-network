@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {Route} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import FriendsContainer from './components/Friends/FriendsContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login';
+// import Login from './components/Login/Login';
 import { initializeAppThunk } from './redux/app-reducer';
 import { connect } from 'react-redux';
 import Preloader from './components/elements/Preloader';
+
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer')); //ленивая загрузка для компонент
+const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const Login = React.lazy(() => import('./components/Login/Login'));
 
 class App extends React.Component {
 
@@ -21,7 +23,7 @@ class App extends React.Component {
   }
 
   render() {
-    if(!this.props.initialized) { //пока инициализация не закончена, показываем прелоадер
+  if(!this.props.initialized) { //пока инициализация не закончена, показывается прелоадер
       return <Preloader />
     }
     return (
@@ -29,13 +31,29 @@ class App extends React.Component {
         <HeaderContainer />
         <Navbar />
         <main className="main">
-          <Route path='/profile/:userId?' render={ () => <ProfileContainer /> }/>
-          <Route path='/dialogs' render={ () => <DialogsContainer /> }/>
+          <Route path='/profile/:userId?' render={ () => {
+            return <Suspense fallback={<Preloader />}> {/*при задержке показывается прелоадер*/}
+              <ProfileContainer /> {/*когда компонента загрузилась, она отрисовывается*/}
+            </Suspense>
+          } }/>
+          <Route path='/dialogs' render={ () => {
+            return <Suspense fallback={<Preloader />}>
+              <DialogsContainer />
+            </Suspense>
+          } }/>
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />
-          <Route path='/friends' render={ () => <FriendsContainer /> } />
-          <Route path='/login' render={ () => <Login /> } />
+          <Route path='/friends' render={ () => {
+            return <Suspense fallback={<Preloader />}>
+              <FriendsContainer />
+            </Suspense>
+          } } />
+          <Route path='/login' render={ () => {
+            return <Suspense fallback={<Preloader />}>
+              <Login />
+            </Suspense>
+          } } />
         </main>
       </div>
     );

@@ -1,4 +1,9 @@
+.paginator {
+  span:hover {
+    cursor: pointer;
+    color: #8ac057;
+  }
+}
 .selectedPage {
-  font-weight: 600;
-  font-size: 20px;
+    color: #8ac057;
 }
