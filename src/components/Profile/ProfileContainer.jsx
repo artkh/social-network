@@ -9,17 +9,27 @@ import { getProfileData, getTextStatus, getAuthUserId } from '../../redux/profil
 
 class ProfileContainer extends React.Component {
 
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.match.params.userId;
-    if(!userId) {
+    if (!userId) {
       userId = this.props.authUserId; //если id профиля неизвестен, тогда берем его из аутентификационного стора
-      if(!userId) {
+      if (!userId) {
         this.props.history.push('/login'); //если в аутентификационном сторе id также неизвестен, делаем редирект на страницу /login
       }
     }
 
     this.props.getProfileThunk(userId);
     this.props.getStatusThunk(userId);
+  }
+
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapShot) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.refreshProfile();
+    }
   }
 
   render() {
