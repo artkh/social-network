@@ -4,11 +4,20 @@ import StatusUserWithHooks from './StatusUserWithHooks';
 
 const UserInfo = (props) => {
 
+  let changePhoto = (e) => {
+    if(e.target.files.length <= 1) {
+      props.savePhoto(e.target.files[0]);
+    }
+    
+  }
+
   return (
     <div className={s.main__user} key={props.id}>
       <div className={s.main__user_image}>
         <img src={!props.smallPhoto ? 'https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png' :
           props.smallPhoto} alt="" />
+        {!props.isOwner ? <div><input type="file" id="changePhoto" onChange={changePhoto} className={s.main__user_image_input} />
+          <label className={s.main__user_image_label} for="changePhoto">change</label></div> : null}
       </div>
       <div className={s.main__user_info}>
         <div className={s.name}>

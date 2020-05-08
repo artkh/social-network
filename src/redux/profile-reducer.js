@@ -5,6 +5,7 @@ const SET_PROFILE = 'SET_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_STATUS = 'UPDATE_STATUS';
 const DELETE_POST = 'DELETE_POST';
+const SAVE_PHOTO_SUCCES = 'SAVE_PHOTO_SUCCES';
 
 let initialState = {
   postsData: [{
@@ -66,6 +67,13 @@ const profileReducer = (state = initialState, action) => {
           postsData: state.postsData.filter(p => p.id !== action.postId)
         }
       }
+    case SAVE_PHOTO_SUCCES:
+      {
+        let stateCopy = {...state};
+        stateCopy.profileData = {...stateCopy.profileData};
+        stateCopy.profileData.photos = action.photo;
+        return stateCopy;
+      }
     default:
       return state;
   }
@@ -76,6 +84,7 @@ export const setProfile = (profileData) => ({ type: SET_PROFILE, profileData });
 export const setStatus = (textStatus) => ({ type: SET_STATUS, textStatus });
 export const updateStatus = (changeStatus) => ({ type: UPDATE_STATUS, changeStatus});
 export const deletePost = (postId) => ({ type: DELETE_POST, postId});
+export const savePhotoSucces = (photo) => ({ type: SAVE_PHOTO_SUCCES, photo});
 
 export const getProfileThunk = (userId) => async (dispatch) => {
   let data = await profileAPI.getProfile(userId);
@@ -99,6 +108,13 @@ export const updateStatusThunk = (changeStatus) => async (dispatch) => {
   let data = await profileAPI.updateStatus(changeStatus);
   if (data.resultCode === 0) {
     dispatch(updateStatus(changeStatus))
+  }
+}
+
+export const savePhotoThunk = (photo) => async (dispatch) => {
+  let data = await profileAPI.savePhoto(photo);
+  if (data.resultCode === 0) {
+    dispatch(savePhotoSucces(data.data.photos))
   }
 }
 

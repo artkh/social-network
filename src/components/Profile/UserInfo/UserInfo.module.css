@@ -12,6 +12,15 @@
 .main__user_image {
   width: 100px;
   height: 100px;
+  position: relative;
+}
+
+.main__user_image:hover .main__user_image_label {
+  display: block;
+}
+.main__user_image:hover {
+  opacity: .5;
+  background-color: #333;
 }
 
 .main__user_image img {
@@ -19,6 +28,26 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.main__user_image_input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.main__user_image_label {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 12px;
+  display: none;
+  transition: .1s;
+}
+.main__user_image_label:hover {
+  color: gold;
 }
 
 .name {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getProfileThunk, getStatusThunk, updateStatusThunk } from '../../redux/profile-reducer';
+import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk } from '../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 // import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -26,8 +26,8 @@ class ProfileContainer extends React.Component {
     this.refreshProfile();
   }
 
-  componentDidUpdate(prevProps, prevState, snapShot) {
-    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+  componentDidUpdate(prevProps, prevState, snapShot) { //перерисовка компоненты при нажатии на profile
+    if (this.props.match.params.userId !== prevProps.match.params.userId) { //если текущий userId не равен предыдущему из props, значит перерисовывать
       this.refreshProfile();
     }
   }
@@ -35,7 +35,9 @@ class ProfileContainer extends React.Component {
   render() {
     return <Profile profileData={this.props.profileData}
     textStatus={this.props.textStatus}
-    updateStatus={this.props.updateStatusThunk} />
+    updateStatus={this.props.updateStatusThunk}
+    isOwner={this.props.match.params.userId}
+    savePhoto={this.props.savePhotoThunk} />
   }
 
 }
@@ -49,7 +51,7 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk }),
+  connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk }),
   withRouter,
   // withAuthRedirect
 )
