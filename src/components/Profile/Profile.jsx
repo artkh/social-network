@@ -6,6 +6,7 @@ import PostsContainer from './Posts/PostsContainer';
 import Preloader from '../elements/Preloader';
 
 const Profile = (props) => {
+
   if(!props.profileData) {
     return <Preloader />
   }
@@ -15,15 +16,18 @@ const Profile = (props) => {
       <MwImage largePhoto={props.profileData.photos.large} />
       <UserInfo aboutMe={props.profileData.aboutMe}
         contacts={props.profileData.contacts}
-        lookingJob={props.profileData.lookingForAJob}
-        lookingJobDesc={props.profileData.lookingForAJobDescription}
+        lookingForAJob={props.profileData.lookingForAJob}
+        lookingForAJobDescription={props.profileData.lookingForAJobDescription}
         fullName={props.profileData.fullName}
         id={props.profileData.userId}
         smallPhoto={props.profileData.photos.small}
         textStatus={props.textStatus}
         updateStatus={props.updateStatus}
         isOwner={props.isOwner}
-        savePhoto={props.savePhoto} />
+        savePhoto={props.savePhoto}
+        updateProfile={props.updateProfile}
+        authUserId={props.authUserId}
+        errorProfileForm={props.errorProfileForm} />
       <PostsContainer />
     </div>
   );

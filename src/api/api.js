@@ -38,6 +38,9 @@ export const profileAPI = {
         'Content-Type': 'multipart/form-data'
       }
     }).then(response => response.data);
+  },
+  updateProfile(newDataProfile) {
+    return instance.put('/profile', newDataProfile).then(response => response.data); //передаем объект из формы, не оборачивая в фигурные скобки, иначе будет объект в объекте, а дальше ошибка
   }
 }
 

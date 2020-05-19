@@ -24,7 +24,7 @@ const PostReduxForm = reduxForm({ form: 'Post' })(PostForm);
 
 const Posts = (props) => {
 
-  let post = props.postsData.map( p => <Post id={p.id} message={p.message} like={p.like} /> );
+  let post = props.postsData.map( p => <Post id={p.id} key={p.id} message={p.message} like={p.like} /> );
 
   const onSubmit = (dataForm) => {
     props.addPost(dataForm.postText);

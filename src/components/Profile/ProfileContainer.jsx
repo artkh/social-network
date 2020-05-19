@@ -1,13 +1,14 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk } from '../../redux/profile-reducer';
+import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk, updateProfileThunk } from '../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 // import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getProfileData, getTextStatus, getAuthUserId } from '../../redux/profile-selectors';
+import { getProfileData, getTextStatus, getAuthUserId, getErrorProfileForm } from '../../redux/profile-selectors';
 
 class ProfileContainer extends React.Component {
+  
 
   refreshProfile() {
     let userId = this.props.match.params.userId;
@@ -37,7 +38,10 @@ class ProfileContainer extends React.Component {
     textStatus={this.props.textStatus}
     updateStatus={this.props.updateStatusThunk}
     isOwner={this.props.match.params.userId}
-    savePhoto={this.props.savePhotoThunk} />
+    savePhoto={this.props.savePhotoThunk}
+    updateProfile={this.props.updateProfileThunk}
+    authUserId={this.props.authUserId}
+    errorProfileForm={this.props.errorProfileForm} />
   }
 
 }
@@ -46,12 +50,13 @@ let mapStateToProps = (state) => {
   return {
     profileData: getProfileData(state),
     textStatus: getTextStatus(state),
-    authUserId: getAuthUserId(state)
+    authUserId: getAuthUserId(state),
+    errorProfileForm: getErrorProfileForm(state),
   }
 };
 
 export default compose(
-  connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk }),
+  connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk, updateProfileThunk }),
   withRouter,
   // withAuthRedirect
 )

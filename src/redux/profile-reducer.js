@@ -1,4 +1,5 @@
 import { profileAPI } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const SET_PROFILE = 'SET_PROFILE';
@@ -6,6 +7,8 @@ const SET_STATUS = 'SET_STATUS';
 const UPDATE_STATUS = 'UPDATE_STATUS';
 const DELETE_POST = 'DELETE_POST';
 const SAVE_PHOTO_SUCCES = 'SAVE_PHOTO_SUCCES';
+const UPDATE_PROFILE_ERROR = 'UPDATE_PROFILE_ERROR';
+
 
 let initialState = {
   postsData: [{
@@ -20,7 +23,8 @@ let initialState = {
       },
     ],
   profileData: null,
-  textStatus: null
+  textStatus: null,
+  errorProfileForm: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -74,6 +78,13 @@ const profileReducer = (state = initialState, action) => {
         stateCopy.profileData.photos = action.photo;
         return stateCopy;
       }
+    case UPDATE_PROFILE_ERROR:
+      {
+        return {
+          ...state,
+          errorProfileForm: action.error
+        }
+      }
     default:
       return state;
   }
@@ -85,6 +96,8 @@ export const setStatus = (textStatus) => ({ type: SET_STATUS, textStatus });
 export const updateStatus = (changeStatus) => ({ type: UPDATE_STATUS, changeStatus});
 export const deletePost = (postId) => ({ type: DELETE_POST, postId});
 export const savePhotoSucces = (photo) => ({ type: SAVE_PHOTO_SUCCES, photo});
+export const updateProfileError = (error) => ({ type: UPDATE_PROFILE_ERROR , error});
+
 
 export const getProfileThunk = (userId) => async (dispatch) => {
   let data = await profileAPI.getProfile(userId);
@@ -116,6 +129,21 @@ export const savePhotoThunk = (photo) => async (dispatch) => {
   if (data.resultCode === 0) {
     dispatch(savePhotoSucces(data.data.photos))
   }
+}
+
+export const updateProfileThunk = (newDataProfile) => async (dispatch, getState) => {
+
+    let userId = getState().auth.userId;
+    let data = await profileAPI.updateProfile(newDataProfile);
+
+    if (data.resultCode === 0) {
+      dispatch(updateProfileError(false));
+      dispatch(getProfileThunk(userId));
+    } else {
+      dispatch(updateProfileError(true));
+      let message = data.messages.length > 0 ? data.messages[0] : 'some error';
+      dispatch( stopSubmit("UserProfile", {_error: message}) );
+    }
 }
 
 export default profileReducer;

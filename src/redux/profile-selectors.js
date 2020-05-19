@@ -9,3 +9,7 @@ export const getTextStatus = (state) => {
 export const getAuthUserId = (state) => {
   return state.auth.userId;
 }
+
+export const getErrorProfileForm = (state) => {
+  return state.profilePage.errorProfileForm;
+}
