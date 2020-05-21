@@ -23,9 +23,6 @@ const UserInfo = (props) => {
 
   let onSubmit = (dataForm) => {
     props.updateProfile(dataForm);
-    if (!props.errorProfileForm) {
-      setEditMode(false);
-    }
   }
 
   

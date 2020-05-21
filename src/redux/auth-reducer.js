@@ -1,13 +1,15 @@
-import { loginAPI } from "../api/api";
+import { loginAPI, capthaAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
+const GET_CAPTCHA = 'GET_CAPTCHA';
 
 let initialState = {
   userId: null,
   email: null,
   login: null,
   isAuth: false,
+  captha: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -21,12 +23,20 @@ const authReducer = (state = initialState, action) => {
           // isAuth: true
         }
       }
+    case GET_CAPTCHA:
+      {
+        return {
+          ...state,
+          captcha: action.captcha
+        }
+      }
     default:
       return state;
   }
 }
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, data: {userId, email, login, isAuth} });
+export const getCapthaSucces = (captcha) => ({ type: GET_CAPTCHA, captcha });
 
 export const getLoginThunk = () => {
   return (dispatch) => {
@@ -39,12 +49,16 @@ export const getLoginThunk = () => {
   }
 }
 
-export const loginAuthThunk = (email, password, rememberMe) => {
+export const loginAuthThunk = (email, password, rememberMe, captcha) => {
   return (dispatch) => {
-    loginAPI.login(email, password, rememberMe).then(data => {
+    loginAPI.login(email, password, rememberMe, captcha).then(data => {
       if(data.resultCode === 0) {
         dispatch(getLoginThunk());
+        dispatch(getCapthaSucces(null));
       } else {
+        if(data.resultCode === 10) {
+          dispatch(getCapthaThunk());
+        }
         let message = data.messages.length > 0 ? data.messages[0] : 'some error';
         dispatch( stopSubmit("Login", {_error: message}) );
       }
@@ -57,6 +71,12 @@ export const logoutAuthThunk = () => (dispatch) => {
     if(data.resultCode === 0) {
       dispatch(setAuthUserData(null, null, null, false));
     }
+  })
+}
+
+export const getCapthaThunk = () => (dispatch) => {
+  capthaAPI.getCaptha().then( data => {
+    dispatch(getCapthaSucces(data.url))
   })
 }
 

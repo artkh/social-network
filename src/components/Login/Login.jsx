@@ -25,6 +25,13 @@ const LoginForm = (props) => {
         <label htmlFor="rememberMe">Remember me</label>
       </div>
       <div>
+        { props.captcha ? <img src={props.captcha} alt="" /> : null}
+        { props.captcha ? 
+          <Field component={Input} type={'text'} name={'captcha'} 
+            id={'captcha'} placeholder={'text captcha'} /> :
+          null}
+      </div>
+      <div>
         <button type={'submit'}>submit</button> 
       </div>
     </form>
@@ -36,7 +43,7 @@ const LoginReduxForm = reduxForm({ form: 'Login' })(LoginForm);
 export class Login extends React.Component {
 
   onSubmit = (dataForm) => {
-    this.props.loginAuthThunk(dataForm.login, dataForm.password, dataForm.rememberMe);
+    this.props.loginAuthThunk(dataForm.login, dataForm.password, dataForm.rememberMe, dataForm.captcha);
   }
 
   render() {
@@ -46,7 +53,7 @@ export class Login extends React.Component {
     return (
       <div>
         <h1>Login</h1>
-        <LoginReduxForm onSubmit={this.onSubmit} />
+        <LoginReduxForm onSubmit={this.onSubmit} captcha={this.props.captcha} />
       </div>
     )
   }
@@ -54,7 +61,8 @@ export class Login extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captcha: state.auth.captcha
   }
 }
 
